@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * InlineResponse2003
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:53:41.882+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:55:51.642+05:30")
 public class InlineResponse2003 {
   @SerializedName("document_type")
   private InlineResponse2003DocumentType documentType = null;

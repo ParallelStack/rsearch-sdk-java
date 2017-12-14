@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * InlineResponse2004Indexes
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:53:41.882+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:55:51.642+05:30")
 public class InlineResponse2004Indexes {
   @SerializedName("results")
   private List<String> results = new ArrayList<String>();

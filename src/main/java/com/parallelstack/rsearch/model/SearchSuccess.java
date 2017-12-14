@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * SearchSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:53:41.882+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:55:51.642+05:30")
 public class SearchSuccess {
   @SerializedName("search_results")
   private InlineResponse2008SearchResults searchResults = null;
