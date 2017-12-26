@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API
+ * REST API Specification for ParallelStack RSearch API.
  *
  * OpenAPI spec version: 1.0.0
  * Contact: team@parallelstack.com
@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.InlineResponse2008SearchResults;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,27 +26,27 @@ import java.io.IOException;
 /**
  * SearchSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-14T17:55:51.642+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:13:54.122+05:30")
 public class SearchSuccess {
-  @SerializedName("search_results")
-  private InlineResponse2008SearchResults searchResults = null;
+  @SerializedName("suggest_results")
+  private Object suggestResults = null;
 
-  public SearchSuccess searchResults(InlineResponse2008SearchResults searchResults) {
-    this.searchResults = searchResults;
+  public SearchSuccess suggestResults(Object suggestResults) {
+    this.suggestResults = suggestResults;
     return this;
   }
 
    /**
-   * Get searchResults
-   * @return searchResults
+   * Get suggestResults
+   * @return suggestResults
   **/
   @ApiModelProperty(value = "")
-  public InlineResponse2008SearchResults getSearchResults() {
-    return searchResults;
+  public Object getSuggestResults() {
+    return suggestResults;
   }
 
-  public void setSearchResults(InlineResponse2008SearchResults searchResults) {
-    this.searchResults = searchResults;
+  public void setSuggestResults(Object suggestResults) {
+    this.suggestResults = suggestResults;
   }
 
 
@@ -59,13 +58,12 @@ public class SearchSuccess {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchSuccess searchSuccess = (SearchSuccess) o;
-    return Objects.equals(this.searchResults, searchSuccess.searchResults);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(searchResults);
+    return Objects.hash(suggestResults);
   }
 
 
@@ -74,7 +72,7 @@ public class SearchSuccess {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchSuccess {\n");
     
-    sb.append("    searchResults: ").append(toIndentedString(searchResults)).append("\n");
+    sb.append("    suggestResults: ").append(toIndentedString(suggestResults)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -89,6 +87,6 @@ public class SearchSuccess {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

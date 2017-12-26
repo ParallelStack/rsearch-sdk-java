@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API
+ * REST API Specification for ParallelStack RSearch API.
  *
  * OpenAPI spec version: 1.0.0
  * Contact: team@parallelstack.com
@@ -14,27 +14,32 @@
 package com.parallelstack.rsearch;
 
 import com.parallelstack.ApiException;
-import com.parallelstack.rsearch.model.InlineResponse200;
-import com.parallelstack.rsearch.model.InlineResponse2001;
-import com.parallelstack.rsearch.model.InlineResponse2002;
-import com.parallelstack.rsearch.model.InlineResponse2003;
-import com.parallelstack.rsearch.model.InlineResponse2004;
-import com.parallelstack.rsearch.model.InlineResponse2005;
-import com.parallelstack.rsearch.model.InlineResponse2006;
-import com.parallelstack.rsearch.model.InlineResponse2007;
-import com.parallelstack.rsearch.model.InlineResponse2008;
-import com.parallelstack.rsearch.model.InlineResponse2009;
-import com.parallelstack.rsearch.model.InlineResponse201;
-import com.parallelstack.rsearch.model.InlineResponse2011;
-import com.parallelstack.rsearch.model.InlineResponse202;
-import com.parallelstack.rsearch.model.InlineResponse400;
-import com.parallelstack.rsearch.model.InlineResponse4001;
-import com.parallelstack.rsearch.model.InlineResponse4002;
-import com.parallelstack.rsearch.model.InlineResponse4003;
-import com.parallelstack.rsearch.model.InlineResponse4004;
-import com.parallelstack.rsearch.model.InlineResponse4005;
-import com.parallelstack.rsearch.model.InlineResponse4006;
-import com.parallelstack.rsearch.model.InlineResponse4007;
+import com.parallelstack.rsearch.model.CreateDocTypeFailure;
+import com.parallelstack.rsearch.model.CreateDocTypeSuccess;
+import com.parallelstack.rsearch.model.CreateDocumentFailure;
+import com.parallelstack.rsearch.model.CreateDocumentSuccess;
+import com.parallelstack.rsearch.model.CreateIndexFailure;
+import com.parallelstack.rsearch.model.CreateIndexSuccess;
+import com.parallelstack.rsearch.model.DeleteDocumentFailure;
+import com.parallelstack.rsearch.model.DeleteDocumentSuccess;
+import com.parallelstack.rsearch.model.DeleteIndexFailure;
+import com.parallelstack.rsearch.model.DeleteIndexSuccess;
+import com.parallelstack.rsearch.model.GetDocTypeFailure;
+import com.parallelstack.rsearch.model.GetDocTypeSuccess;
+import com.parallelstack.rsearch.model.GetDocTypesFailure;
+import com.parallelstack.rsearch.model.GetDocTypesSuccess;
+import com.parallelstack.rsearch.model.GetDocumentFailure;
+import com.parallelstack.rsearch.model.GetDocumentSuccess;
+import com.parallelstack.rsearch.model.GetDocumentsFailure;
+import com.parallelstack.rsearch.model.GetDocumentsSuccess;
+import com.parallelstack.rsearch.model.GetIndexFailure;
+import com.parallelstack.rsearch.model.GetIndexSuccess;
+import com.parallelstack.rsearch.model.GetIndexesFailure;
+import com.parallelstack.rsearch.model.GetIndexesSuccess;
+import com.parallelstack.rsearch.model.SearchFailure;
+import com.parallelstack.rsearch.model.SearchSuccess;
+import com.parallelstack.rsearch.model.SuggestFailure;
+import com.parallelstack.rsearch.model.SuggestSuccess;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -65,8 +70,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        Object documentDetails = null;
-        InlineResponse2006 response = api.addDocument(indexName, docTypeName, docId, documentDetails);
+        CreateDocumentSuccess response = api.addDocument(indexNamedocTypeNamedocId);
 
         // TODO: test validations
     }
@@ -74,7 +78,7 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specified parameters
+     * Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specified parameters. You should define the parameters correctly as per the getting started guide, else getting the right structure might be an issue.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -83,8 +87,7 @@ public class RsearchApiTest {
     public void addDocumentTypeTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        Object docTypeDetails = null;
-        InlineResponse2011 response = api.addDocumentType(indexName, docTypeName, docTypeDetails);
+        CreateDocTypeSuccess response = api.addDocumentType(indexNamedocTypeName);
 
         // TODO: test validations
     }
@@ -92,7 +95,7 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Creates &#x60;a new index&#x60;
+     * Creates &#x60;a new index&#x60;.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -100,7 +103,7 @@ public class RsearchApiTest {
     @Test
     public void addIndexTest() throws ApiException {
         String indexName = null;
-        InlineResponse201 response = api.addIndex(indexName);
+        CreateIndexSuccess response = api.addIndex(indexName);
 
         // TODO: test validations
     }
@@ -118,7 +121,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        InlineResponse2007 response = api.deleteDocument(indexName, docTypeName, docId);
+        DeleteDocumentSuccess response = api.deleteDocument(indexNamedocTypeNamedocId);
 
         // TODO: test validations
     }
@@ -134,7 +137,7 @@ public class RsearchApiTest {
     @Test
     public void deleteIndexTest() throws ApiException {
         String indexName = null;
-        InlineResponse202 response = api.deleteIndex(indexName);
+        DeleteIndexSuccess response = api.deleteIndex(indexName);
 
         // TODO: test validations
     }
@@ -142,7 +145,40 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Advanced Search which gets all documents in &#x60;index_name&#x60; for provided search criteria
+     * Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60; limited by the body params. Please ensure you refer the getting started guides, to get the format of the query right.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAdvancedDocTypeSuggestResultsTest() throws ApiException {
+        String indexName = null;
+        String docTypeName = null;
+        SuggestSuccess response = api.getAdvancedDocTypeSuggestResults(indexNamedocTypeName);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Gets Suggestions in &#x60;index_name&#x60; limited by the request body fields
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAdvancedIndexSuggestResultsTest() throws ApiException {
+        String indexName = null;
+        SuggestSuccess response = api.getAdvancedIndexSuggestResults(indexName);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Advanced Search which gets all documents in &#x60;index_name&#x60; for provided search criteria. Please ensure you refer the getting started guides, to get the format of the query right.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -151,8 +187,7 @@ public class RsearchApiTest {
     public void getAdvancedSearchResultsTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        Object search = null;
-        InlineResponse2008 response = api.getAdvancedSearchResults(indexName, docTypeName, search);
+        SearchSuccess response = api.getAdvancedSearchResults(indexNamedocTypeName);
 
         // TODO: test validations
     }
@@ -168,7 +203,7 @@ public class RsearchApiTest {
     @Test
     public void getAllDocumentTypesTest() throws ApiException {
         String indexName = null;
-        InlineResponse2002 response = api.getAllDocumentTypes(indexName);
+        GetDocTypesSuccess response = api.getAllDocumentTypes(indexName);
 
         // TODO: test validations
     }
@@ -176,7 +211,7 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Fetches all documents in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;
+     * Fetches all documents in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;. All the documents and hence careful with its use.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -185,7 +220,7 @@ public class RsearchApiTest {
     public void getAllDocumentsTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        InlineResponse2004 response = api.getAllDocuments(indexName, docTypeName);
+        GetDocumentsSuccess response = api.getAllDocuments(indexNamedocTypeName);
 
         // TODO: test validations
     }
@@ -193,14 +228,14 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Fetches &#x60;All indexes&#x60;
+     * Fetches &#x60;All indexes&#x60; that the user has. Not recommended to be used in production code, as there isn&#39;t that big a Use case for listing all indexes!
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllIndexesTest() throws ApiException {
-        InlineResponse200 response = api.getAllIndexes();
+        GetIndexesSuccess response = api.getAllIndexes();
 
         // TODO: test validations
     }
@@ -217,7 +252,7 @@ public class RsearchApiTest {
     public void getBasicSearchResultsTest() throws ApiException {
         String indexName = null;
         String q = null;
-        InlineResponse2008 response = api.getBasicSearchResults(indexName, q);
+        SearchSuccess response = api.getBasicSearchResults(indexNameq);
 
         // TODO: test validations
     }
@@ -225,7 +260,25 @@ public class RsearchApiTest {
     /**
      * 
      *
-     * Fetches details of &#x60;doc_id&#x60; in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;
+     * Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60;. Please ensure you refer the getting started guides, to get the format of the query right.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getDocTypeSuggestResultsTest() throws ApiException {
+        String indexName = null;
+        String docTypeName = null;
+        String q = null;
+        SuggestSuccess response = api.getDocTypeSuggestResults(indexNamedocTypeNameq);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Fetches the document referenced by &#x60;doc_id&#x60; in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -235,7 +288,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        InlineResponse2005 response = api.getDocument(indexName, docTypeName, docId);
+        GetDocumentSuccess response = api.getDocument(indexNamedocTypeNamedocId);
 
         // TODO: test validations
     }
@@ -252,7 +305,7 @@ public class RsearchApiTest {
     public void getDocumentTypeTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        InlineResponse2003 response = api.getDocumentType(indexName, docTypeName);
+        GetDocTypeSuccess response = api.getDocumentType(indexNamedocTypeName);
 
         // TODO: test validations
     }
@@ -268,25 +321,7 @@ public class RsearchApiTest {
     @Test
     public void getIndexTest() throws ApiException {
         String indexName = null;
-        InlineResponse2001 response = api.getIndex(indexName);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * Basic Search - Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60;
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getSuggestResultsTest() throws ApiException {
-        String indexName = null;
-        String docTypeName = null;
-        String q = null;
-        InlineResponse2009 response = api.getSuggestResults(indexName, docTypeName, q);
+        GetIndexSuccess response = api.getIndex(indexName);
 
         // TODO: test validations
     }

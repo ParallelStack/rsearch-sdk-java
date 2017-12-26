@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API
+ * REST API Specification for ParallelStack RSearch API.
  *
  * OpenAPI spec version: 1.0.0
  * Contact: team@parallelstack.com

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.parallelstack</groupId>
     <artifactId>rsearch</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.parallelstack:rsearch:1.0.0"
+compile "com.parallelstack:rsearch:1.1.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/rsearch-1.0.0.jar
+* target/rsearch-1.1.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -71,25 +71,14 @@ public class RsearchApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: authToken
-        ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
-        authToken.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //authToken.setApiKeyPrefix("Token");
 
-        // Configure API key authorization: writeAppID
-        ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
-        writeAppID.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //writeAppID.setApiKeyPrefix("Token");
 
         RsearchApi apiInstance = new RsearchApi();
-        String indexName = "indexName_example"; // String | Name of the index
-        String docTypeName = "docTypeName_example"; // String | Name of the document_type
-        String docId = "docId_example"; // String | Document ID
-        Object documentDetails = null; // Object | Details of the document
+        String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+        String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
+        String docId = Arrays.asList("docId_example"); // String | Document ID
         try {
-            InlineResponse2006 result = apiInstance.addDocument(indexName, docTypeName, docId, documentDetails);
+            CreateDocumentSuccess result = apiInstance.addDocument(indexNamedocTypeNamedocId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RsearchApi#addDocument");
@@ -111,57 +100,51 @@ Class | Method | HTTP request | Description
 *RsearchApi* | [**addIndex**](docs/RsearchApi.md#addIndex) | **POST** /indexes/{index_name} | 
 *RsearchApi* | [**deleteDocument**](docs/RsearchApi.md#deleteDocument) | **DELETE** /indexes/{index_name}/document_types/{doc_type_name}/documents/{doc_id} | 
 *RsearchApi* | [**deleteIndex**](docs/RsearchApi.md#deleteIndex) | **DELETE** /indexes/{index_name} | 
+*RsearchApi* | [**getAdvancedDocTypeSuggestResults**](docs/RsearchApi.md#getAdvancedDocTypeSuggestResults) | **POST** /indexes/{index_name}/document_types/{doc_type_name}/suggest | 
+*RsearchApi* | [**getAdvancedIndexSuggestResults**](docs/RsearchApi.md#getAdvancedIndexSuggestResults) | **POST** /indexes/{index_name}/suggest | 
 *RsearchApi* | [**getAdvancedSearchResults**](docs/RsearchApi.md#getAdvancedSearchResults) | **POST** /indexes/{index_name}/document_types/{doc_type_name}/search | 
 *RsearchApi* | [**getAllDocumentTypes**](docs/RsearchApi.md#getAllDocumentTypes) | **GET** /indexes/{index_name}/document_types | 
 *RsearchApi* | [**getAllDocuments**](docs/RsearchApi.md#getAllDocuments) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/documents | 
 *RsearchApi* | [**getAllIndexes**](docs/RsearchApi.md#getAllIndexes) | **GET** /indexes | 
 *RsearchApi* | [**getBasicSearchResults**](docs/RsearchApi.md#getBasicSearchResults) | **GET** /indexes/{index_name}/search | 
+*RsearchApi* | [**getDocTypeSuggestResults**](docs/RsearchApi.md#getDocTypeSuggestResults) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/suggest | 
 *RsearchApi* | [**getDocument**](docs/RsearchApi.md#getDocument) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/documents/{doc_id} | 
 *RsearchApi* | [**getDocumentType**](docs/RsearchApi.md#getDocumentType) | **GET** /indexes/{index_name}/document_types/{doc_type_name} | 
 *RsearchApi* | [**getIndex**](docs/RsearchApi.md#getIndex) | **GET** /indexes/{index_name} | 
-*RsearchApi* | [**getSuggestResults**](docs/RsearchApi.md#getSuggestResults) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/suggest | 
 
 
 ## Documentation for Models
 
- - [DoctypesFailure](docs/DoctypesFailure.md)
- - [GetAllDoctypesSuccess](docs/GetAllDoctypesSuccess.md)
- - [GetDoctypeSuccess](docs/GetDoctypeSuccess.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse2001Index](docs/InlineResponse2001Index.md)
- - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2002Indexes](docs/InlineResponse2002Indexes.md)
- - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2003DocumentType](docs/InlineResponse2003DocumentType.md)
- - [InlineResponse2004](docs/InlineResponse2004.md)
- - [InlineResponse2004Indexes](docs/InlineResponse2004Indexes.md)
- - [InlineResponse2005](docs/InlineResponse2005.md)
- - [InlineResponse2005Document](docs/InlineResponse2005Document.md)
- - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
- - [InlineResponse2008](docs/InlineResponse2008.md)
- - [InlineResponse2008SearchResults](docs/InlineResponse2008SearchResults.md)
- - [InlineResponse2009](docs/InlineResponse2009.md)
- - [InlineResponse2009SuggestResults](docs/InlineResponse2009SuggestResults.md)
- - [InlineResponse200Indexes](docs/InlineResponse200Indexes.md)
- - [InlineResponse201](docs/InlineResponse201.md)
- - [InlineResponse2011](docs/InlineResponse2011.md)
- - [InlineResponse201Index](docs/InlineResponse201Index.md)
- - [InlineResponse202](docs/InlineResponse202.md)
- - [InlineResponse202Index](docs/InlineResponse202Index.md)
- - [InlineResponse400](docs/InlineResponse400.md)
- - [InlineResponse4001](docs/InlineResponse4001.md)
- - [InlineResponse4002](docs/InlineResponse4002.md)
- - [InlineResponse4003](docs/InlineResponse4003.md)
- - [InlineResponse4004](docs/InlineResponse4004.md)
- - [InlineResponse4005](docs/InlineResponse4005.md)
- - [InlineResponse4006](docs/InlineResponse4006.md)
- - [InlineResponse4006SearchResults](docs/InlineResponse4006SearchResults.md)
- - [InlineResponse4007](docs/InlineResponse4007.md)
- - [InlineResponse4007SearchResults](docs/InlineResponse4007SearchResults.md)
- - [InlineResponse400Indexes](docs/InlineResponse400Indexes.md)
+ - [CreateDocTypeFailure](docs/CreateDocTypeFailure.md)
+ - [CreateDocTypeSuccess](docs/CreateDocTypeSuccess.md)
+ - [CreateDocumentFailure](docs/CreateDocumentFailure.md)
+ - [CreateDocumentSuccess](docs/CreateDocumentSuccess.md)
+ - [CreateIndexFailure](docs/CreateIndexFailure.md)
+ - [CreateIndexSuccess](docs/CreateIndexSuccess.md)
+ - [DeleteDocumentFailure](docs/DeleteDocumentFailure.md)
+ - [DeleteDocumentSuccess](docs/DeleteDocumentSuccess.md)
+ - [DeleteIndexFailure](docs/DeleteIndexFailure.md)
+ - [DeleteIndexSuccess](docs/DeleteIndexSuccess.md)
+ - [Document](docs/Document.md)
+ - [DocumentType](docs/DocumentType.md)
+ - [GetDocTypeFailure](docs/GetDocTypeFailure.md)
+ - [GetDocTypeSuccess](docs/GetDocTypeSuccess.md)
+ - [GetDocTypesFailure](docs/GetDocTypesFailure.md)
+ - [GetDocTypesSuccess](docs/GetDocTypesSuccess.md)
+ - [GetDocumentFailure](docs/GetDocumentFailure.md)
+ - [GetDocumentSuccess](docs/GetDocumentSuccess.md)
+ - [GetDocumentsFailure](docs/GetDocumentsFailure.md)
+ - [GetDocumentsSuccess](docs/GetDocumentsSuccess.md)
+ - [GetIndexFailure](docs/GetIndexFailure.md)
+ - [GetIndexSuccess](docs/GetIndexSuccess.md)
+ - [GetIndexesFailure](docs/GetIndexesFailure.md)
+ - [GetIndexesSuccess](docs/GetIndexesSuccess.md)
+ - [SearchFailure](docs/SearchFailure.md)
+ - [SearchQuery](docs/SearchQuery.md)
  - [SearchSuccess](docs/SearchSuccess.md)
+ - [SuggestFailure](docs/SuggestFailure.md)
+ - [SuggestQuery](docs/SuggestQuery.md)
+ - [SuggestSuccess](docs/SuggestSuccess.md)
 
 
 ## Documentation for Authorization
@@ -169,21 +152,12 @@ Class | Method | HTTP request | Description
 Authentication schemes defined for the API:
 ### authToken
 
-- **Type**: API key
-- **API key parameter name**: auth_token
-- **Location**: URL query string
 
 ### readAppID
 
-- **Type**: API key
-- **API key parameter name**: X-RSearch-App-ID
-- **Location**: HTTP header
 
 ### writeAppID
 
-- **Type**: API key
-- **API key parameter name**: X-RSearch-App-ID
-- **Location**: HTTP header
 
 
 ## Recommendation
