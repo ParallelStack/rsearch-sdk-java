@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * CreateDocumentSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:13:54.122+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:22:08.220+05:30")
 public class CreateDocumentSuccess {
   @SerializedName("document")
   private Object document = null;
