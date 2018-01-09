@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**indexes** | [**Object**](.md) |  | 
+**indexes** | [**GetIndexesFailureIndexes**](GetIndexesFailureIndexes.md) |  | 
 
 
 

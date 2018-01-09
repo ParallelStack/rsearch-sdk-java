@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**index** | [**Object**](.md) |  | 
+**index** | [**DeleteIndexSuccessIndex**](DeleteIndexSuccessIndex.md) |  | 
 
 
 

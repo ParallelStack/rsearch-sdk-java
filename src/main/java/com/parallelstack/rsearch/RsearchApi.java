@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -37,6 +37,8 @@ import com.parallelstack.rsearch.model.DeleteDocumentFailure;
 import com.parallelstack.rsearch.model.DeleteDocumentSuccess;
 import com.parallelstack.rsearch.model.DeleteIndexFailure;
 import com.parallelstack.rsearch.model.DeleteIndexSuccess;
+import com.parallelstack.rsearch.model.Document;
+import com.parallelstack.rsearch.model.DocumentType;
 import com.parallelstack.rsearch.model.GetDocTypeFailure;
 import com.parallelstack.rsearch.model.GetDocTypeSuccess;
 import com.parallelstack.rsearch.model.GetDocTypesFailure;
@@ -50,8 +52,10 @@ import com.parallelstack.rsearch.model.GetIndexSuccess;
 import com.parallelstack.rsearch.model.GetIndexesFailure;
 import com.parallelstack.rsearch.model.GetIndexesSuccess;
 import com.parallelstack.rsearch.model.SearchFailure;
+import com.parallelstack.rsearch.model.SearchQuery;
 import com.parallelstack.rsearch.model.SearchSuccess;
 import com.parallelstack.rsearch.model.SuggestFailure;
+import com.parallelstack.rsearch.model.SuggestQuery;
 import com.parallelstack.rsearch.model.SuggestSuccess;
 
 import java.lang.reflect.Type;
@@ -84,13 +88,14 @@ public class RsearchApi {
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
      * @param docId Document ID (required)
+     * @param documentDetails Details of the document (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call addDocumentCall(String indexName, String docTypeName, String docId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call addDocumentCall(String indexName, String docTypeName, String docId, Document documentDetails, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = documentDetails;
 
         // create path and map variables
         String localVarPath = "/indexes/{index_name}/document_types/{doc_type_name}/documents/{doc_id}"
@@ -106,13 +111,13 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -129,12 +134,12 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""writeAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "writeAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call addDocumentValidateBeforeCall(String indexName, String docTypeName, String docId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call addDocumentValidateBeforeCall(String indexName, String docTypeName, String docId, Document documentDetails, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'indexName' is set
         if (indexName == null) {
@@ -151,8 +156,13 @@ public class RsearchApi {
             throw new ApiException("Missing the required parameter 'docId' when calling addDocument(Async)");
         }
         
+        // verify the required parameter 'documentDetails' is set
+        if (documentDetails == null) {
+            throw new ApiException("Missing the required parameter 'documentDetails' when calling addDocument(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = addDocumentCall(indexName, docTypeName, docId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = addDocumentCall(indexName, docTypeName, docId, documentDetails, progressListener, progressRequestListener);
         return call;
 
     }
@@ -163,11 +173,12 @@ public class RsearchApi {
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
      * @param docId Document ID (required)
+     * @param documentDetails Details of the document (required)
      * @return CreateDocumentSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CreateDocumentSuccess addDocument(String indexNameString docTypeNameString docId) throws ApiException {
-        ApiResponse<CreateDocumentSuccess> resp = addDocumentWithHttpInfo(indexNamedocTypeNamedocId);
+    public CreateDocumentSuccess addDocument(String indexName, String docTypeName, String docId, Document documentDetails) throws ApiException {
+        ApiResponse<CreateDocumentSuccess> resp = addDocumentWithHttpInfo(indexName, docTypeName, docId, documentDetails);
         return resp.getData();
     }
 
@@ -177,11 +188,12 @@ public class RsearchApi {
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
      * @param docId Document ID (required)
+     * @param documentDetails Details of the document (required)
      * @return ApiResponse&lt;CreateDocumentSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CreateDocumentSuccess> addDocumentWithHttpInfo(String indexNameString docTypeNameString docId) throws ApiException {
-        com.squareup.okhttp.Call call = addDocumentValidateBeforeCall(indexName, docTypeName, docId, null, null);
+    public ApiResponse<CreateDocumentSuccess> addDocumentWithHttpInfo(String indexName, String docTypeName, String docId, Document documentDetails) throws ApiException {
+        com.squareup.okhttp.Call call = addDocumentValidateBeforeCall(indexName, docTypeName, docId, documentDetails, null, null);
         Type localVarReturnType = new TypeToken<CreateDocumentSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -192,11 +204,12 @@ public class RsearchApi {
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
      * @param docId Document ID (required)
+     * @param documentDetails Details of the document (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addDocumentAsync(String indexName, String docTypeName, String docId, final ApiCallback<CreateDocumentSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call addDocumentAsync(String indexName, String docTypeName, String docId, Document documentDetails, final ApiCallback<CreateDocumentSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -217,7 +230,7 @@ public class RsearchApi {
             };
         }
 
-        com.squareup.okhttp.Call call = addDocumentValidateBeforeCall(indexName, docTypeName, docId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = addDocumentValidateBeforeCall(indexName, docTypeName, docId, documentDetails, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateDocumentSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -226,13 +239,14 @@ public class RsearchApi {
      * Build call for addDocumentType
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
+     * @param docTypeDetails Details of the document_type (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call addDocumentTypeCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call addDocumentTypeCall(String indexName, String docTypeName, DocumentType docTypeDetails, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = docTypeDetails;
 
         // create path and map variables
         String localVarPath = "/indexes/{index_name}/document_types/{doc_type_name}"
@@ -247,13 +261,13 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -270,12 +284,12 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call addDocumentTypeValidateBeforeCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call addDocumentTypeValidateBeforeCall(String indexName, String docTypeName, DocumentType docTypeDetails, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'indexName' is set
         if (indexName == null) {
@@ -287,8 +301,13 @@ public class RsearchApi {
             throw new ApiException("Missing the required parameter 'docTypeName' when calling addDocumentType(Async)");
         }
         
+        // verify the required parameter 'docTypeDetails' is set
+        if (docTypeDetails == null) {
+            throw new ApiException("Missing the required parameter 'docTypeDetails' when calling addDocumentType(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = addDocumentTypeCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = addDocumentTypeCall(indexName, docTypeName, docTypeDetails, progressListener, progressRequestListener);
         return call;
 
     }
@@ -298,11 +317,12 @@ public class RsearchApi {
      * Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specified parameters. You should define the parameters correctly as per the getting started guide, else getting the right structure might be an issue.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
+     * @param docTypeDetails Details of the document_type (required)
      * @return CreateDocTypeSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CreateDocTypeSuccess addDocumentType(String indexNameString docTypeName) throws ApiException {
-        ApiResponse<CreateDocTypeSuccess> resp = addDocumentTypeWithHttpInfo(indexNamedocTypeName);
+    public CreateDocTypeSuccess addDocumentType(String indexName, String docTypeName, DocumentType docTypeDetails) throws ApiException {
+        ApiResponse<CreateDocTypeSuccess> resp = addDocumentTypeWithHttpInfo(indexName, docTypeName, docTypeDetails);
         return resp.getData();
     }
 
@@ -311,11 +331,12 @@ public class RsearchApi {
      * Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specified parameters. You should define the parameters correctly as per the getting started guide, else getting the right structure might be an issue.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
+     * @param docTypeDetails Details of the document_type (required)
      * @return ApiResponse&lt;CreateDocTypeSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CreateDocTypeSuccess> addDocumentTypeWithHttpInfo(String indexNameString docTypeName) throws ApiException {
-        com.squareup.okhttp.Call call = addDocumentTypeValidateBeforeCall(indexName, docTypeName, null, null);
+    public ApiResponse<CreateDocTypeSuccess> addDocumentTypeWithHttpInfo(String indexName, String docTypeName, DocumentType docTypeDetails) throws ApiException {
+        com.squareup.okhttp.Call call = addDocumentTypeValidateBeforeCall(indexName, docTypeName, docTypeDetails, null, null);
         Type localVarReturnType = new TypeToken<CreateDocTypeSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -325,11 +346,12 @@ public class RsearchApi {
      * Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specified parameters. You should define the parameters correctly as per the getting started guide, else getting the right structure might be an issue.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the document_type (required)
+     * @param docTypeDetails Details of the document_type (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addDocumentTypeAsync(String indexName, String docTypeName, final ApiCallback<CreateDocTypeSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call addDocumentTypeAsync(String indexName, String docTypeName, DocumentType docTypeDetails, final ApiCallback<CreateDocTypeSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -350,7 +372,7 @@ public class RsearchApi {
             };
         }
 
-        com.squareup.okhttp.Call call = addDocumentTypeValidateBeforeCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = addDocumentTypeValidateBeforeCall(indexName, docTypeName, docTypeDetails, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CreateDocTypeSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -378,7 +400,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -401,7 +423,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""writeAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "writeAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -505,7 +527,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -528,7 +550,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""writeAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "writeAppID" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -565,8 +587,8 @@ public class RsearchApi {
      * @return DeleteDocumentSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DeleteDocumentSuccess deleteDocument(String indexNameString docTypeNameString docId) throws ApiException {
-        ApiResponse<DeleteDocumentSuccess> resp = deleteDocumentWithHttpInfo(indexNamedocTypeNamedocId);
+    public DeleteDocumentSuccess deleteDocument(String indexName, String docTypeName, String docId) throws ApiException {
+        ApiResponse<DeleteDocumentSuccess> resp = deleteDocumentWithHttpInfo(indexName, docTypeName, docId);
         return resp.getData();
     }
 
@@ -579,7 +601,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;DeleteDocumentSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DeleteDocumentSuccess> deleteDocumentWithHttpInfo(String indexNameString docTypeNameString docId) throws ApiException {
+    public ApiResponse<DeleteDocumentSuccess> deleteDocumentWithHttpInfo(String indexName, String docTypeName, String docId) throws ApiException {
         com.squareup.okhttp.Call call = deleteDocumentValidateBeforeCall(indexName, docTypeName, docId, null, null);
         Type localVarReturnType = new TypeToken<DeleteDocumentSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -644,7 +666,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -667,7 +689,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""writeAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "writeAppID" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -748,13 +770,14 @@ public class RsearchApi {
      * Build call for getAdvancedDocTypeSuggestResults
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param suggest Details of the search query (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsCall(String indexName, String docTypeName, SuggestQuery suggest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = suggest;
 
         // create path and map variables
         String localVarPath = "/indexes/{index_name}/document_types/{doc_type_name}/suggest"
@@ -769,13 +792,13 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -792,12 +815,12 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsValidateBeforeCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsValidateBeforeCall(String indexName, String docTypeName, SuggestQuery suggest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'indexName' is set
         if (indexName == null) {
@@ -809,8 +832,13 @@ public class RsearchApi {
             throw new ApiException("Missing the required parameter 'docTypeName' when calling getAdvancedDocTypeSuggestResults(Async)");
         }
         
+        // verify the required parameter 'suggest' is set
+        if (suggest == null) {
+            throw new ApiException("Missing the required parameter 'suggest' when calling getAdvancedDocTypeSuggestResults(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsCall(indexName, docTypeName, suggest, progressListener, progressRequestListener);
         return call;
 
     }
@@ -820,11 +848,12 @@ public class RsearchApi {
      * Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60; limited by the body params. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param suggest Details of the search query (required)
      * @return SuggestSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SuggestSuccess getAdvancedDocTypeSuggestResults(String indexNameString docTypeName) throws ApiException {
-        ApiResponse<SuggestSuccess> resp = getAdvancedDocTypeSuggestResultsWithHttpInfo(indexNamedocTypeName);
+    public SuggestSuccess getAdvancedDocTypeSuggestResults(String indexName, String docTypeName, SuggestQuery suggest) throws ApiException {
+        ApiResponse<SuggestSuccess> resp = getAdvancedDocTypeSuggestResultsWithHttpInfo(indexName, docTypeName, suggest);
         return resp.getData();
     }
 
@@ -833,11 +862,12 @@ public class RsearchApi {
      * Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60; limited by the body params. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param suggest Details of the search query (required)
      * @return ApiResponse&lt;SuggestSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SuggestSuccess> getAdvancedDocTypeSuggestResultsWithHttpInfo(String indexNameString docTypeName) throws ApiException {
-        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsValidateBeforeCall(indexName, docTypeName, null, null);
+    public ApiResponse<SuggestSuccess> getAdvancedDocTypeSuggestResultsWithHttpInfo(String indexName, String docTypeName, SuggestQuery suggest) throws ApiException {
+        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsValidateBeforeCall(indexName, docTypeName, suggest, null, null);
         Type localVarReturnType = new TypeToken<SuggestSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -847,11 +877,12 @@ public class RsearchApi {
      * Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60; limited by the body params. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param suggest Details of the search query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsAsync(String indexName, String docTypeName, final ApiCallback<SuggestSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAdvancedDocTypeSuggestResultsAsync(String indexName, String docTypeName, SuggestQuery suggest, final ApiCallback<SuggestSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -872,7 +903,7 @@ public class RsearchApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsValidateBeforeCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedDocTypeSuggestResultsValidateBeforeCall(indexName, docTypeName, suggest, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SuggestSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -880,13 +911,14 @@ public class RsearchApi {
     /**
      * Build call for getAdvancedIndexSuggestResults
      * @param indexName Name of the index (required)
+     * @param search Details of the search query (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedIndexSuggestResultsCall(String indexName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call getAdvancedIndexSuggestResultsCall(String indexName, SuggestQuery search, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = search;
 
         // create path and map variables
         String localVarPath = "/indexes/{index_name}/suggest"
@@ -900,13 +932,13 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -923,20 +955,25 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAdvancedIndexSuggestResultsValidateBeforeCall(String indexName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAdvancedIndexSuggestResultsValidateBeforeCall(String indexName, SuggestQuery search, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'indexName' is set
         if (indexName == null) {
             throw new ApiException("Missing the required parameter 'indexName' when calling getAdvancedIndexSuggestResults(Async)");
         }
         
+        // verify the required parameter 'search' is set
+        if (search == null) {
+            throw new ApiException("Missing the required parameter 'search' when calling getAdvancedIndexSuggestResults(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsCall(indexName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsCall(indexName, search, progressListener, progressRequestListener);
         return call;
 
     }
@@ -945,11 +982,12 @@ public class RsearchApi {
      * 
      * Gets Suggestions in &#x60;index_name&#x60; limited by the request body fields
      * @param indexName Name of the index (required)
+     * @param search Details of the search query (required)
      * @return SuggestSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SuggestSuccess getAdvancedIndexSuggestResults(String indexName) throws ApiException {
-        ApiResponse<SuggestSuccess> resp = getAdvancedIndexSuggestResultsWithHttpInfo(indexName);
+    public SuggestSuccess getAdvancedIndexSuggestResults(String indexName, SuggestQuery search) throws ApiException {
+        ApiResponse<SuggestSuccess> resp = getAdvancedIndexSuggestResultsWithHttpInfo(indexName, search);
         return resp.getData();
     }
 
@@ -957,11 +995,12 @@ public class RsearchApi {
      * 
      * Gets Suggestions in &#x60;index_name&#x60; limited by the request body fields
      * @param indexName Name of the index (required)
+     * @param search Details of the search query (required)
      * @return ApiResponse&lt;SuggestSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SuggestSuccess> getAdvancedIndexSuggestResultsWithHttpInfo(String indexName) throws ApiException {
-        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsValidateBeforeCall(indexName, null, null);
+    public ApiResponse<SuggestSuccess> getAdvancedIndexSuggestResultsWithHttpInfo(String indexName, SuggestQuery search) throws ApiException {
+        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsValidateBeforeCall(indexName, search, null, null);
         Type localVarReturnType = new TypeToken<SuggestSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -970,11 +1009,12 @@ public class RsearchApi {
      *  (asynchronously)
      * Gets Suggestions in &#x60;index_name&#x60; limited by the request body fields
      * @param indexName Name of the index (required)
+     * @param search Details of the search query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedIndexSuggestResultsAsync(String indexName, final ApiCallback<SuggestSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAdvancedIndexSuggestResultsAsync(String indexName, SuggestQuery search, final ApiCallback<SuggestSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -995,7 +1035,7 @@ public class RsearchApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsValidateBeforeCall(indexName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedIndexSuggestResultsValidateBeforeCall(indexName, search, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SuggestSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1004,13 +1044,14 @@ public class RsearchApi {
      * Build call for getAdvancedSearchResults
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param search Details of the search query (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedSearchResultsCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call getAdvancedSearchResultsCall(String indexName, String docTypeName, SearchQuery search, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = search;
 
         // create path and map variables
         String localVarPath = "/indexes/{index_name}/document_types/{doc_type_name}/search"
@@ -1025,13 +1066,13 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1048,12 +1089,12 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""writeAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "writeAppID" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAdvancedSearchResultsValidateBeforeCall(String indexName, String docTypeName, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAdvancedSearchResultsValidateBeforeCall(String indexName, String docTypeName, SearchQuery search, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'indexName' is set
         if (indexName == null) {
@@ -1065,8 +1106,13 @@ public class RsearchApi {
             throw new ApiException("Missing the required parameter 'docTypeName' when calling getAdvancedSearchResults(Async)");
         }
         
+        // verify the required parameter 'search' is set
+        if (search == null) {
+            throw new ApiException("Missing the required parameter 'search' when calling getAdvancedSearchResults(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = getAdvancedSearchResultsCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedSearchResultsCall(indexName, docTypeName, search, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1076,11 +1122,12 @@ public class RsearchApi {
      * Advanced Search which gets all documents in &#x60;index_name&#x60; for provided search criteria. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param search Details of the search query (required)
      * @return SearchSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SearchSuccess getAdvancedSearchResults(String indexNameString docTypeName) throws ApiException {
-        ApiResponse<SearchSuccess> resp = getAdvancedSearchResultsWithHttpInfo(indexNamedocTypeName);
+    public SearchSuccess getAdvancedSearchResults(String indexName, String docTypeName, SearchQuery search) throws ApiException {
+        ApiResponse<SearchSuccess> resp = getAdvancedSearchResultsWithHttpInfo(indexName, docTypeName, search);
         return resp.getData();
     }
 
@@ -1089,11 +1136,12 @@ public class RsearchApi {
      * Advanced Search which gets all documents in &#x60;index_name&#x60; for provided search criteria. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param search Details of the search query (required)
      * @return ApiResponse&lt;SearchSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SearchSuccess> getAdvancedSearchResultsWithHttpInfo(String indexNameString docTypeName) throws ApiException {
-        com.squareup.okhttp.Call call = getAdvancedSearchResultsValidateBeforeCall(indexName, docTypeName, null, null);
+    public ApiResponse<SearchSuccess> getAdvancedSearchResultsWithHttpInfo(String indexName, String docTypeName, SearchQuery search) throws ApiException {
+        com.squareup.okhttp.Call call = getAdvancedSearchResultsValidateBeforeCall(indexName, docTypeName, search, null, null);
         Type localVarReturnType = new TypeToken<SearchSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1103,11 +1151,12 @@ public class RsearchApi {
      * Advanced Search which gets all documents in &#x60;index_name&#x60; for provided search criteria. Please ensure you refer the getting started guides, to get the format of the query right.
      * @param indexName Name of the index (required)
      * @param docTypeName Name of the Document_type (required)
+     * @param search Details of the search query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAdvancedSearchResultsAsync(String indexName, String docTypeName, final ApiCallback<SearchSuccess> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAdvancedSearchResultsAsync(String indexName, String docTypeName, SearchQuery search, final ApiCallback<SearchSuccess> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1128,7 +1177,7 @@ public class RsearchApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAdvancedSearchResultsValidateBeforeCall(indexName, docTypeName, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAdvancedSearchResultsValidateBeforeCall(indexName, docTypeName, search, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SearchSuccess>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1156,7 +1205,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1179,7 +1228,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1281,7 +1330,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1304,7 +1353,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1335,8 +1384,8 @@ public class RsearchApi {
      * @return GetDocumentsSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GetDocumentsSuccess getAllDocuments(String indexNameString docTypeName) throws ApiException {
-        ApiResponse<GetDocumentsSuccess> resp = getAllDocumentsWithHttpInfo(indexNamedocTypeName);
+    public GetDocumentsSuccess getAllDocuments(String indexName, String docTypeName) throws ApiException {
+        ApiResponse<GetDocumentsSuccess> resp = getAllDocumentsWithHttpInfo(indexName, docTypeName);
         return resp.getData();
     }
 
@@ -1348,7 +1397,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;GetDocumentsSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GetDocumentsSuccess> getAllDocumentsWithHttpInfo(String indexNameString docTypeName) throws ApiException {
+    public ApiResponse<GetDocumentsSuccess> getAllDocumentsWithHttpInfo(String indexName, String docTypeName) throws ApiException {
         com.squareup.okhttp.Call call = getAllDocumentsValidateBeforeCall(indexName, docTypeName, null, null);
         Type localVarReturnType = new TypeToken<GetDocumentsSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1410,7 +1459,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1433,7 +1482,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1528,7 +1577,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1551,7 +1600,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1582,8 +1631,8 @@ public class RsearchApi {
      * @return SearchSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SearchSuccess getBasicSearchResults(String indexNameString q) throws ApiException {
-        ApiResponse<SearchSuccess> resp = getBasicSearchResultsWithHttpInfo(indexNameq);
+    public SearchSuccess getBasicSearchResults(String indexName, String q) throws ApiException {
+        ApiResponse<SearchSuccess> resp = getBasicSearchResultsWithHttpInfo(indexName, q);
         return resp.getData();
     }
 
@@ -1595,7 +1644,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;SearchSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SearchSuccess> getBasicSearchResultsWithHttpInfo(String indexNameString q) throws ApiException {
+    public ApiResponse<SearchSuccess> getBasicSearchResultsWithHttpInfo(String indexName, String q) throws ApiException {
         com.squareup.okhttp.Call call = getBasicSearchResultsValidateBeforeCall(indexName, q, null, null);
         Type localVarReturnType = new TypeToken<SearchSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1664,7 +1713,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1687,7 +1736,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1724,8 +1773,8 @@ public class RsearchApi {
      * @return SuggestSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SuggestSuccess getDocTypeSuggestResults(String indexNameString docTypeNameString q) throws ApiException {
-        ApiResponse<SuggestSuccess> resp = getDocTypeSuggestResultsWithHttpInfo(indexNamedocTypeNameq);
+    public SuggestSuccess getDocTypeSuggestResults(String indexName, String docTypeName, String q) throws ApiException {
+        ApiResponse<SuggestSuccess> resp = getDocTypeSuggestResultsWithHttpInfo(indexName, docTypeName, q);
         return resp.getData();
     }
 
@@ -1738,7 +1787,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;SuggestSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SuggestSuccess> getDocTypeSuggestResultsWithHttpInfo(String indexNameString docTypeNameString q) throws ApiException {
+    public ApiResponse<SuggestSuccess> getDocTypeSuggestResultsWithHttpInfo(String indexName, String docTypeName, String q) throws ApiException {
         com.squareup.okhttp.Call call = getDocTypeSuggestResultsValidateBeforeCall(indexName, docTypeName, q, null, null);
         Type localVarReturnType = new TypeToken<SuggestSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1807,7 +1856,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1830,7 +1879,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -1867,8 +1916,8 @@ public class RsearchApi {
      * @return GetDocumentSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GetDocumentSuccess getDocument(String indexNameString docTypeNameString docId) throws ApiException {
-        ApiResponse<GetDocumentSuccess> resp = getDocumentWithHttpInfo(indexNamedocTypeNamedocId);
+    public GetDocumentSuccess getDocument(String indexName, String docTypeName, String docId) throws ApiException {
+        ApiResponse<GetDocumentSuccess> resp = getDocumentWithHttpInfo(indexName, docTypeName, docId);
         return resp.getData();
     }
 
@@ -1881,7 +1930,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;GetDocumentSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GetDocumentSuccess> getDocumentWithHttpInfo(String indexNameString docTypeNameString docId) throws ApiException {
+    public ApiResponse<GetDocumentSuccess> getDocumentWithHttpInfo(String indexName, String docTypeName, String docId) throws ApiException {
         com.squareup.okhttp.Call call = getDocumentValidateBeforeCall(indexName, docTypeName, docId, null, null);
         Type localVarReturnType = new TypeToken<GetDocumentSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1948,7 +1997,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1971,7 +2020,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -2002,8 +2051,8 @@ public class RsearchApi {
      * @return GetDocTypeSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GetDocTypeSuccess getDocumentType(String indexNameString docTypeName) throws ApiException {
-        ApiResponse<GetDocTypeSuccess> resp = getDocumentTypeWithHttpInfo(indexNamedocTypeName);
+    public GetDocTypeSuccess getDocumentType(String indexName, String docTypeName) throws ApiException {
+        ApiResponse<GetDocTypeSuccess> resp = getDocumentTypeWithHttpInfo(indexName, docTypeName);
         return resp.getData();
     }
 
@@ -2015,7 +2064,7 @@ public class RsearchApi {
      * @return ApiResponse&lt;GetDocTypeSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GetDocTypeSuccess> getDocumentTypeWithHttpInfo(String indexNameString docTypeName) throws ApiException {
+    public ApiResponse<GetDocTypeSuccess> getDocumentTypeWithHttpInfo(String indexName, String docTypeName) throws ApiException {
         com.squareup.okhttp.Call call = getDocumentTypeValidateBeforeCall(indexName, docTypeName, null, null);
         Type localVarReturnType = new TypeToken<GetDocTypeSuccess>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2079,7 +2128,7 @@ public class RsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json""application/json""application/json""application/json""application/json"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -2102,7 +2151,7 @@ public class RsearchApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "authToken""readAppID" };
+        String[] localVarAuthNames = new String[] { "authToken", "readAppID" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 

@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.GetIndexSuccessIndexes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * GetIndexSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class GetIndexSuccess {
   @SerializedName("indexes")
-  private Object indexes = null;
+  private GetIndexSuccessIndexes indexes = null;
 
-  public GetIndexSuccess indexes(Object indexes) {
+  public GetIndexSuccess indexes(GetIndexSuccessIndexes indexes) {
     this.indexes = indexes;
     return this;
   }
@@ -41,11 +42,11 @@ public class GetIndexSuccess {
    * @return indexes
   **/
   @ApiModelProperty(value = "")
-  public Object getIndexes() {
+  public GetIndexSuccessIndexes getIndexes() {
     return indexes;
   }
 
-  public void setIndexes(Object indexes) {
+  public void setIndexes(GetIndexSuccessIndexes indexes) {
     this.indexes = indexes;
   }
 
@@ -58,7 +59,8 @@ public class GetIndexSuccess {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    GetIndexSuccess getIndexSuccess = (GetIndexSuccess) o;
+    return Objects.equals(this.indexes, getIndexSuccess.indexes);
   }
 
   @Override

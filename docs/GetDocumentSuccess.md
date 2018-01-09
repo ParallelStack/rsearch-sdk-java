@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**document** | [**Object**](.md) |  | 
+**document** | [**GetDocumentSuccessDocument**](GetDocumentSuccessDocument.md) |  | 
 
 
 

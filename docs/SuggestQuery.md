@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**suggest** | [**Object**](.md) |  | 
+**suggest** | [**SuggestQuerySuggest**](SuggestQuerySuggest.md) |  | 
 
 
 

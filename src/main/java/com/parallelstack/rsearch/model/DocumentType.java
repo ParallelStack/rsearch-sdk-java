@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.ERRORUNKNOWN;
+import com.parallelstack.rsearch.model.DocumentTypeFields;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,13 +29,13 @@ import java.util.List;
 /**
  * DocumentType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class DocumentType {
   @SerializedName("name")
   private String name = null;
 
   @SerializedName("fields")
-  private List<Object<ERRORUNKNOWN>> fields = new ArrayList<Object<ERRORUNKNOWN>>();
+  private List<DocumentTypeFields> fields = new ArrayList<DocumentTypeFields>();
 
   public DocumentType name(String name) {
     this.name = name;
@@ -55,8 +55,13 @@ public class DocumentType {
     this.name = name;
   }
 
-  public DocumentType fields(List<Object<ERRORUNKNOWN>> fields) {
+  public DocumentType fields(List<DocumentTypeFields> fields) {
     this.fields = fields;
+    return this;
+  }
+
+  public DocumentType addFieldsItem(DocumentTypeFields fieldsItem) {
+    this.fields.add(fieldsItem);
     return this;
   }
 
@@ -65,11 +70,11 @@ public class DocumentType {
    * @return fields
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<Object<ERRORUNKNOWN>> getFields() {
+  public List<DocumentTypeFields> getFields() {
     return fields;
   }
 
-  public void setFields(List<Object<ERRORUNKNOWN>> fields) {
+  public void setFields(List<DocumentTypeFields> fields) {
     this.fields = fields;
   }
 
@@ -82,12 +87,14 @@ public class DocumentType {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    DocumentType documentType = (DocumentType) o;
+    return Objects.equals(this.name, documentType.name) &&
+        Objects.equals(this.fields, documentType.fields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(namefields);
+    return Objects.hash(name, fields);
   }
 
 

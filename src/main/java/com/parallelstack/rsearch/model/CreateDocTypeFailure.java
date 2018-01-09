@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.GetIndexesFailureIndexes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * CreateDocTypeFailure
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class CreateDocTypeFailure {
   @SerializedName("document_type")
-  private Object documentType = null;
+  private GetIndexesFailureIndexes documentType = null;
 
-  public CreateDocTypeFailure documentType(Object documentType) {
+  public CreateDocTypeFailure documentType(GetIndexesFailureIndexes documentType) {
     this.documentType = documentType;
     return this;
   }
@@ -41,11 +42,11 @@ public class CreateDocTypeFailure {
    * @return documentType
   **/
   @ApiModelProperty(required = true, value = "")
-  public Object getDocumentType() {
+  public GetIndexesFailureIndexes getDocumentType() {
     return documentType;
   }
 
-  public void setDocumentType(Object documentType) {
+  public void setDocumentType(GetIndexesFailureIndexes documentType) {
     this.documentType = documentType;
   }
 
@@ -58,7 +59,8 @@ public class CreateDocTypeFailure {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    CreateDocTypeFailure createDocTypeFailure = (CreateDocTypeFailure) o;
+    return Objects.equals(this.documentType, createDocTypeFailure.documentType);
   }
 
   @Override

@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.GetIndexesFailureIndexes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * GetDocumentsFailure
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class GetDocumentsFailure {
   @SerializedName("documents")
-  private Object documents = null;
+  private GetIndexesFailureIndexes documents = null;
 
-  public GetDocumentsFailure documents(Object documents) {
+  public GetDocumentsFailure documents(GetIndexesFailureIndexes documents) {
     this.documents = documents;
     return this;
   }
@@ -41,11 +42,11 @@ public class GetDocumentsFailure {
    * @return documents
   **/
   @ApiModelProperty(required = true, value = "")
-  public Object getDocuments() {
+  public GetIndexesFailureIndexes getDocuments() {
     return documents;
   }
 
-  public void setDocuments(Object documents) {
+  public void setDocuments(GetIndexesFailureIndexes documents) {
     this.documents = documents;
   }
 
@@ -58,7 +59,8 @@ public class GetDocumentsFailure {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    GetDocumentsFailure getDocumentsFailure = (GetDocumentsFailure) o;
+    return Objects.equals(this.documents, getDocumentsFailure.documents);
   }
 
   @Override

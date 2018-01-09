@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**documentTypes** | [**Object**](.md) |  | 
+**documentTypes** | [**GetDocTypesSuccessDocumentTypes**](GetDocTypesSuccessDocumentTypes.md) |  | 
 
 
 

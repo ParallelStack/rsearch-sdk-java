@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**search** | [**Object**](.md) |  | 
+**search** | [**SearchQuerySearch**](SearchQuerySearch.md) |  | 
 
 
 

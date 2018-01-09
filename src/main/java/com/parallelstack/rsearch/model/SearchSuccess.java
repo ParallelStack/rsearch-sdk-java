@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.SearchSuccessSuggestResults;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * SearchSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class SearchSuccess {
   @SerializedName("suggest_results")
-  private Object suggestResults = null;
+  private SearchSuccessSuggestResults suggestResults = null;
 
-  public SearchSuccess suggestResults(Object suggestResults) {
+  public SearchSuccess suggestResults(SearchSuccessSuggestResults suggestResults) {
     this.suggestResults = suggestResults;
     return this;
   }
@@ -41,11 +42,11 @@ public class SearchSuccess {
    * @return suggestResults
   **/
   @ApiModelProperty(value = "")
-  public Object getSuggestResults() {
+  public SearchSuccessSuggestResults getSuggestResults() {
     return suggestResults;
   }
 
-  public void setSuggestResults(Object suggestResults) {
+  public void setSuggestResults(SearchSuccessSuggestResults suggestResults) {
     this.suggestResults = suggestResults;
   }
 
@@ -58,7 +59,8 @@ public class SearchSuccess {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    SearchSuccess searchSuccess = (SearchSuccess) o;
+    return Objects.equals(this.suggestResults, searchSuccess.suggestResults);
   }
 
   @Override

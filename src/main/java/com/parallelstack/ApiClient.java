@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -89,6 +89,9 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
+        authentications.put("authToken", new ApiKeyAuth("query", "auth_token"));
+        authentications.put("readAppID", new ApiKeyAuth("header", "X-RSearch-App-ID"));
+        authentications.put("writeAppID", new ApiKeyAuth("header", "X-RSearch-App-ID"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }

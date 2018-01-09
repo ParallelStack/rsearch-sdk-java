@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.ERRORUNKNOWN;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,13 +28,13 @@ import java.util.List;
 /**
  * Document
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class Document {
   @SerializedName("document_id")
   private String documentId = null;
 
   @SerializedName("fields")
-  private List<Object<ERRORUNKNOWN>> fields = new ArrayList<Object<ERRORUNKNOWN>>();
+  private List<Object> fields = new ArrayList<Object>();
 
   public Document documentId(String documentId) {
     this.documentId = documentId;
@@ -55,8 +54,13 @@ public class Document {
     this.documentId = documentId;
   }
 
-  public Document fields(List<Object<ERRORUNKNOWN>> fields) {
+  public Document fields(List<Object> fields) {
     this.fields = fields;
+    return this;
+  }
+
+  public Document addFieldsItem(Object fieldsItem) {
+    this.fields.add(fieldsItem);
     return this;
   }
 
@@ -65,11 +69,11 @@ public class Document {
    * @return fields
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<Object<ERRORUNKNOWN>> getFields() {
+  public List<Object> getFields() {
     return fields;
   }
 
-  public void setFields(List<Object<ERRORUNKNOWN>> fields) {
+  public void setFields(List<Object> fields) {
     this.fields = fields;
   }
 
@@ -82,12 +86,14 @@ public class Document {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    Document document = (Document) o;
+    return Objects.equals(this.documentId, document.documentId) &&
+        Objects.equals(this.fields, document.fields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentIdfields);
+    return Objects.hash(documentId, fields);
   }
 
 

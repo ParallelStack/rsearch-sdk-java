@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -24,6 +24,8 @@ import com.parallelstack.rsearch.model.DeleteDocumentFailure;
 import com.parallelstack.rsearch.model.DeleteDocumentSuccess;
 import com.parallelstack.rsearch.model.DeleteIndexFailure;
 import com.parallelstack.rsearch.model.DeleteIndexSuccess;
+import com.parallelstack.rsearch.model.Document;
+import com.parallelstack.rsearch.model.DocumentType;
 import com.parallelstack.rsearch.model.GetDocTypeFailure;
 import com.parallelstack.rsearch.model.GetDocTypeSuccess;
 import com.parallelstack.rsearch.model.GetDocTypesFailure;
@@ -37,8 +39,10 @@ import com.parallelstack.rsearch.model.GetIndexSuccess;
 import com.parallelstack.rsearch.model.GetIndexesFailure;
 import com.parallelstack.rsearch.model.GetIndexesSuccess;
 import com.parallelstack.rsearch.model.SearchFailure;
+import com.parallelstack.rsearch.model.SearchQuery;
 import com.parallelstack.rsearch.model.SearchSuccess;
 import com.parallelstack.rsearch.model.SuggestFailure;
+import com.parallelstack.rsearch.model.SuggestQuery;
 import com.parallelstack.rsearch.model.SuggestSuccess;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -70,7 +74,8 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        CreateDocumentSuccess response = api.addDocument(indexNamedocTypeNamedocId);
+        Document documentDetails = null;
+        CreateDocumentSuccess response = api.addDocument(indexName, docTypeName, docId, documentDetails);
 
         // TODO: test validations
     }
@@ -87,7 +92,8 @@ public class RsearchApiTest {
     public void addDocumentTypeTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        CreateDocTypeSuccess response = api.addDocumentType(indexNamedocTypeName);
+        DocumentType docTypeDetails = null;
+        CreateDocTypeSuccess response = api.addDocumentType(indexName, docTypeName, docTypeDetails);
 
         // TODO: test validations
     }
@@ -121,7 +127,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        DeleteDocumentSuccess response = api.deleteDocument(indexNamedocTypeNamedocId);
+        DeleteDocumentSuccess response = api.deleteDocument(indexName, docTypeName, docId);
 
         // TODO: test validations
     }
@@ -154,7 +160,8 @@ public class RsearchApiTest {
     public void getAdvancedDocTypeSuggestResultsTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        SuggestSuccess response = api.getAdvancedDocTypeSuggestResults(indexNamedocTypeName);
+        SuggestQuery suggest = null;
+        SuggestSuccess response = api.getAdvancedDocTypeSuggestResults(indexName, docTypeName, suggest);
 
         // TODO: test validations
     }
@@ -170,7 +177,8 @@ public class RsearchApiTest {
     @Test
     public void getAdvancedIndexSuggestResultsTest() throws ApiException {
         String indexName = null;
-        SuggestSuccess response = api.getAdvancedIndexSuggestResults(indexName);
+        SuggestQuery search = null;
+        SuggestSuccess response = api.getAdvancedIndexSuggestResults(indexName, search);
 
         // TODO: test validations
     }
@@ -187,7 +195,8 @@ public class RsearchApiTest {
     public void getAdvancedSearchResultsTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        SearchSuccess response = api.getAdvancedSearchResults(indexNamedocTypeName);
+        SearchQuery search = null;
+        SearchSuccess response = api.getAdvancedSearchResults(indexName, docTypeName, search);
 
         // TODO: test validations
     }
@@ -220,7 +229,7 @@ public class RsearchApiTest {
     public void getAllDocumentsTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        GetDocumentsSuccess response = api.getAllDocuments(indexNamedocTypeName);
+        GetDocumentsSuccess response = api.getAllDocuments(indexName, docTypeName);
 
         // TODO: test validations
     }
@@ -252,7 +261,7 @@ public class RsearchApiTest {
     public void getBasicSearchResultsTest() throws ApiException {
         String indexName = null;
         String q = null;
-        SearchSuccess response = api.getBasicSearchResults(indexNameq);
+        SearchSuccess response = api.getBasicSearchResults(indexName, q);
 
         // TODO: test validations
     }
@@ -270,7 +279,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String q = null;
-        SuggestSuccess response = api.getDocTypeSuggestResults(indexNamedocTypeNameq);
+        SuggestSuccess response = api.getDocTypeSuggestResults(indexName, docTypeName, q);
 
         // TODO: test validations
     }
@@ -288,7 +297,7 @@ public class RsearchApiTest {
         String indexName = null;
         String docTypeName = null;
         String docId = null;
-        GetDocumentSuccess response = api.getDocument(indexNamedocTypeNamedocId);
+        GetDocumentSuccess response = api.getDocument(indexName, docTypeName, docId);
 
         // TODO: test validations
     }
@@ -305,7 +314,7 @@ public class RsearchApiTest {
     public void getDocumentTypeTest() throws ApiException {
         String indexName = null;
         String docTypeName = null;
-        GetDocTypeSuccess response = api.getDocumentType(indexNamedocTypeName);
+        GetDocTypeSuccess response = api.getDocumentType(indexName, docTypeName);
 
         // TODO: test validations
     }

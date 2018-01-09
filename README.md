@@ -71,14 +71,25 @@ public class RsearchApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure API key authorization: authToken
+        ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+        authToken.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //authToken.setApiKeyPrefix("Token");
 
+        // Configure API key authorization: writeAppID
+        ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+        writeAppID.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //writeAppID.setApiKeyPrefix("Token");
 
         RsearchApi apiInstance = new RsearchApi();
-        String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-        String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
-        String docId = Arrays.asList("docId_example"); // String | Document ID
+        String indexName = "indexName_example"; // String | Name of the index
+        String docTypeName = "docTypeName_example"; // String | Name of the document_type
+        String docId = "docId_example"; // String | Document ID
+        Document documentDetails = new Document(); // Document | Details of the document
         try {
-            CreateDocumentSuccess result = apiInstance.addDocument(indexNamedocTypeNamedocId);
+            CreateDocumentSuccess result = apiInstance.addDocument(indexName, docTypeName, docId, documentDetails);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RsearchApi#addDocument");
@@ -121,29 +132,46 @@ Class | Method | HTTP request | Description
  - [CreateDocumentSuccess](docs/CreateDocumentSuccess.md)
  - [CreateIndexFailure](docs/CreateIndexFailure.md)
  - [CreateIndexSuccess](docs/CreateIndexSuccess.md)
+ - [CreateIndexSuccessIndexes](docs/CreateIndexSuccessIndexes.md)
  - [DeleteDocumentFailure](docs/DeleteDocumentFailure.md)
  - [DeleteDocumentSuccess](docs/DeleteDocumentSuccess.md)
  - [DeleteIndexFailure](docs/DeleteIndexFailure.md)
  - [DeleteIndexSuccess](docs/DeleteIndexSuccess.md)
+ - [DeleteIndexSuccessIndex](docs/DeleteIndexSuccessIndex.md)
  - [Document](docs/Document.md)
  - [DocumentType](docs/DocumentType.md)
+ - [DocumentTypeFields](docs/DocumentTypeFields.md)
  - [GetDocTypeFailure](docs/GetDocTypeFailure.md)
  - [GetDocTypeSuccess](docs/GetDocTypeSuccess.md)
+ - [GetDocTypeSuccessDocumentType](docs/GetDocTypeSuccessDocumentType.md)
  - [GetDocTypesFailure](docs/GetDocTypesFailure.md)
  - [GetDocTypesSuccess](docs/GetDocTypesSuccess.md)
+ - [GetDocTypesSuccessDocumentTypes](docs/GetDocTypesSuccessDocumentTypes.md)
  - [GetDocumentFailure](docs/GetDocumentFailure.md)
  - [GetDocumentSuccess](docs/GetDocumentSuccess.md)
+ - [GetDocumentSuccessDocument](docs/GetDocumentSuccessDocument.md)
  - [GetDocumentsFailure](docs/GetDocumentsFailure.md)
  - [GetDocumentsSuccess](docs/GetDocumentsSuccess.md)
+ - [GetDocumentsSuccessDocuments](docs/GetDocumentsSuccessDocuments.md)
  - [GetIndexFailure](docs/GetIndexFailure.md)
  - [GetIndexSuccess](docs/GetIndexSuccess.md)
+ - [GetIndexSuccessIndexes](docs/GetIndexSuccessIndexes.md)
  - [GetIndexesFailure](docs/GetIndexesFailure.md)
+ - [GetIndexesFailureIndexes](docs/GetIndexesFailureIndexes.md)
  - [GetIndexesSuccess](docs/GetIndexesSuccess.md)
+ - [GetIndexesSuccessIndexes](docs/GetIndexesSuccessIndexes.md)
+ - [GetIndexesSuccessIndexesMetadata](docs/GetIndexesSuccessIndexesMetadata.md)
  - [SearchFailure](docs/SearchFailure.md)
+ - [SearchFailureSuggestResults](docs/SearchFailureSuggestResults.md)
  - [SearchQuery](docs/SearchQuery.md)
+ - [SearchQuerySearch](docs/SearchQuerySearch.md)
+ - [SearchQuerySearchAggregations](docs/SearchQuerySearchAggregations.md)
  - [SearchSuccess](docs/SearchSuccess.md)
+ - [SearchSuccessSuggestResults](docs/SearchSuccessSuggestResults.md)
+ - [SearchSuccessSuggestResultsMetadata](docs/SearchSuccessSuggestResultsMetadata.md)
  - [SuggestFailure](docs/SuggestFailure.md)
  - [SuggestQuery](docs/SuggestQuery.md)
+ - [SuggestQuerySuggest](docs/SuggestQuerySuggest.md)
  - [SuggestSuccess](docs/SuggestSuccess.md)
 
 
@@ -152,12 +180,21 @@ Class | Method | HTTP request | Description
 Authentication schemes defined for the API:
 ### authToken
 
+- **Type**: API key
+- **API key parameter name**: auth_token
+- **Location**: URL query string
 
 ### readAppID
 
+- **Type**: API key
+- **API key parameter name**: X-RSearch-App-ID
+- **Location**: HTTP header
 
 ### writeAppID
 
+- **Type**: API key
+- **API key parameter name**: X-RSearch-App-ID
+- **Location**: HTTP header
 
 
 ## Recommendation

@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.SearchQuerySearch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * SearchQuery
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class SearchQuery {
   @SerializedName("search")
-  private Object search = null;
+  private SearchQuerySearch search = null;
 
-  public SearchQuery search(Object search) {
+  public SearchQuery search(SearchQuerySearch search) {
     this.search = search;
     return this;
   }
@@ -41,11 +42,11 @@ public class SearchQuery {
    * @return search
   **/
   @ApiModelProperty(required = true, value = "")
-  public Object getSearch() {
+  public SearchQuerySearch getSearch() {
     return search;
   }
 
-  public void setSearch(Object search) {
+  public void setSearch(SearchQuerySearch search) {
     this.search = search;
   }
 
@@ -58,7 +59,8 @@ public class SearchQuery {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    SearchQuery searchQuery = (SearchQuery) o;
+    return Objects.equals(this.search, searchQuery.search);
   }
 
   @Override

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**documentType** | [**Object**](.md) |  | 
+**documentType** | [**CreateIndexSuccessIndexes**](CreateIndexSuccessIndexes.md) |  | 
 
 
 

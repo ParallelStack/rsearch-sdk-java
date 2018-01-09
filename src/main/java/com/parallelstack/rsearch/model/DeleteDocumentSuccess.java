@@ -1,6 +1,6 @@
 /*
  * ParallelStack RSearch API
- * REST API Specification for ParallelStack RSearch API.
+ * REST API Specification for ParallelStack RSearch API
  *
  * OpenAPI spec version: 1.1.0
  * Contact: team@parallelstack.com
@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.parallelstack.rsearch.model.DeleteIndexSuccessIndex;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,12 +27,12 @@ import java.io.IOException;
 /**
  * DeleteDocumentSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-12-26T18:37:15.033+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
 public class DeleteDocumentSuccess {
   @SerializedName("document")
-  private Object document = null;
+  private DeleteIndexSuccessIndex document = null;
 
-  public DeleteDocumentSuccess document(Object document) {
+  public DeleteDocumentSuccess document(DeleteIndexSuccessIndex document) {
     this.document = document;
     return this;
   }
@@ -41,11 +42,11 @@ public class DeleteDocumentSuccess {
    * @return document
   **/
   @ApiModelProperty(required = true, value = "")
-  public Object getDocument() {
+  public DeleteIndexSuccessIndex getDocument() {
     return document;
   }
 
-  public void setDocument(Object document) {
+  public void setDocument(DeleteIndexSuccessIndex document) {
     this.document = document;
   }
 
@@ -58,7 +59,8 @@ public class DeleteDocumentSuccess {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    DeleteDocumentSuccess deleteDocumentSuccess = (DeleteDocumentSuccess) o;
+    return Objects.equals(this.document, deleteDocumentSuccess.document);
   }
 
   @Override

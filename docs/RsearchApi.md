@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="addDocument"></a>
 # **addDocument**
-> CreateDocumentSuccess addDocument(indexNamedocTypeNamedocId)
+> CreateDocumentSuccess addDocument(indexName, docTypeName, docId, documentDetails)
 
 
 
@@ -33,16 +33,33 @@ Creates &#x60;doc_id&#x60; in &#x60;doc_type_name&#x60; for &#x60;index_name&#x6
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
-String docId = Arrays.asList("docId_example"); // String | Document ID
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
+String docId = "docId_example"; // String | Document ID
+Document documentDetails = new Document(); // Document | Details of the document
 try {
-    CreateDocumentSuccess result = apiInstance.addDocument(indexNamedocTypeNamedocId);
+    CreateDocumentSuccess result = apiInstance.addDocument(indexName, docTypeName, docId, documentDetails);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#addDocument");
@@ -54,9 +71,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
- **docId** | [**String**](.md)| Document ID |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
+ **docId** | **String**| Document ID |
+ **documentDetails** | [**Document**](Document.md)| Details of the document |
 
 ### Return type
 
@@ -64,16 +82,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="addDocumentType"></a>
 # **addDocumentType**
-> CreateDocTypeSuccess addDocumentType(indexNamedocTypeName)
+> CreateDocTypeSuccess addDocumentType(indexName, docTypeName, docTypeDetails)
 
 
 
@@ -82,15 +100,32 @@ Creates specific &#x60;document_type&#x60; in &#x60;index_name&#x60; with specif
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
+DocumentType docTypeDetails = new DocumentType(); // DocumentType | Details of the document_type
 try {
-    CreateDocTypeSuccess result = apiInstance.addDocumentType(indexNamedocTypeName);
+    CreateDocTypeSuccess result = apiInstance.addDocumentType(indexName, docTypeName, docTypeDetails);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#addDocumentType");
@@ -102,8 +137,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
+ **docTypeDetails** | [**DocumentType**](DocumentType.md)| Details of the document_type |
 
 ### Return type
 
@@ -111,12 +147,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="addIndex"></a>
 # **addIndex**
@@ -129,12 +165,28 @@ Creates &#x60;a new index&#x60;.
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+String indexName = "indexName_example"; // String | Name of the index
 try {
     CreateIndexSuccess result = apiInstance.addIndex(indexName);
     System.out.println(result);
@@ -148,7 +200,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
+ **indexName** | **String**| Name of the index |
 
 ### Return type
 
@@ -156,16 +208,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="deleteDocument"></a>
 # **deleteDocument**
-> DeleteDocumentSuccess deleteDocument(indexNamedocTypeNamedocId)
+> DeleteDocumentSuccess deleteDocument(indexName, docTypeName, docId)
 
 
 
@@ -174,16 +226,32 @@ Deletes &#x60;doc_id&#x60; in &#x60;doc_type_name&#x60; for &#x60;index_name&#x6
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
-String docId = Arrays.asList("docId_example"); // String | Document ID
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
+String docId = "docId_example"; // String | Document ID
 try {
-    DeleteDocumentSuccess result = apiInstance.deleteDocument(indexNamedocTypeNamedocId);
+    DeleteDocumentSuccess result = apiInstance.deleteDocument(indexName, docTypeName, docId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#deleteDocument");
@@ -195,9 +263,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
- **docId** | [**String**](.md)| Document ID |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
+ **docId** | **String**| Document ID |
 
 ### Return type
 
@@ -205,12 +273,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="deleteIndex"></a>
 # **deleteIndex**
@@ -223,12 +291,28 @@ Deletes &#x60;an index&#x60; {index_name}
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+String indexName = "indexName_example"; // String | Name of the index
 try {
     DeleteIndexSuccess result = apiInstance.deleteIndex(indexName);
     System.out.println(result);
@@ -242,7 +326,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
+ **indexName** | **String**| Name of the index |
 
 ### Return type
 
@@ -250,16 +334,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getAdvancedDocTypeSuggestResults"></a>
 # **getAdvancedDocTypeSuggestResults**
-> SuggestSuccess getAdvancedDocTypeSuggestResults(indexNamedocTypeName)
+> SuggestSuccess getAdvancedDocTypeSuggestResults(indexName, docTypeName, suggest)
 
 
 
@@ -268,15 +352,32 @@ Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60; limite
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the Document_type
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the Document_type
+SuggestQuery suggest = new SuggestQuery(); // SuggestQuery | Details of the search query
 try {
-    SuggestSuccess result = apiInstance.getAdvancedDocTypeSuggestResults(indexNamedocTypeName);
+    SuggestSuccess result = apiInstance.getAdvancedDocTypeSuggestResults(indexName, docTypeName, suggest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getAdvancedDocTypeSuggestResults");
@@ -288,8 +389,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the Document_type |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the Document_type |
+ **suggest** | [**SuggestQuery**](SuggestQuery.md)| Details of the search query |
 
 ### Return type
 
@@ -297,16 +399,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getAdvancedIndexSuggestResults"></a>
 # **getAdvancedIndexSuggestResults**
-> SuggestSuccess getAdvancedIndexSuggestResults(indexName)
+> SuggestSuccess getAdvancedIndexSuggestResults(indexName, search)
 
 
 
@@ -315,14 +417,31 @@ Gets Suggestions in &#x60;index_name&#x60; limited by the request body fields
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+String indexName = "indexName_example"; // String | Name of the index
+SuggestQuery search = new SuggestQuery(); // SuggestQuery | Details of the search query
 try {
-    SuggestSuccess result = apiInstance.getAdvancedIndexSuggestResults(indexName);
+    SuggestSuccess result = apiInstance.getAdvancedIndexSuggestResults(indexName, search);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getAdvancedIndexSuggestResults");
@@ -334,7 +453,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
+ **indexName** | **String**| Name of the index |
+ **search** | [**SuggestQuery**](SuggestQuery.md)| Details of the search query |
 
 ### Return type
 
@@ -342,16 +462,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getAdvancedSearchResults"></a>
 # **getAdvancedSearchResults**
-> SearchSuccess getAdvancedSearchResults(indexNamedocTypeName)
+> SearchSuccess getAdvancedSearchResults(indexName, docTypeName, search)
 
 
 
@@ -360,15 +480,32 @@ Advanced Search which gets all documents in &#x60;index_name&#x60; for provided 
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the Document_type
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the Document_type
+SearchQuery search = new SearchQuery(); // SearchQuery | Details of the search query
 try {
-    SearchSuccess result = apiInstance.getAdvancedSearchResults(indexNamedocTypeName);
+    SearchSuccess result = apiInstance.getAdvancedSearchResults(indexName, docTypeName, search);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getAdvancedSearchResults");
@@ -380,8 +517,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the Document_type |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the Document_type |
+ **search** | [**SearchQuery**](SearchQuery.md)| Details of the search query |
 
 ### Return type
 
@@ -389,12 +527,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getAllDocumentTypes"></a>
 # **getAllDocumentTypes**
@@ -407,12 +545,28 @@ Gets &#x60;All document_types&#x60; present in &#x60;index_name&#x60;
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+String indexName = "indexName_example"; // String | Name of the index
 try {
     GetDocTypesSuccess result = apiInstance.getAllDocumentTypes(indexName);
     System.out.println(result);
@@ -426,7 +580,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
+ **indexName** | **String**| Name of the index |
 
 ### Return type
 
@@ -434,16 +588,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getAllDocuments"></a>
 # **getAllDocuments**
-> GetDocumentsSuccess getAllDocuments(indexNamedocTypeName)
+> GetDocumentsSuccess getAllDocuments(indexName, docTypeName)
 
 
 
@@ -452,15 +606,31 @@ Fetches all documents in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;. A
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
 try {
-    GetDocumentsSuccess result = apiInstance.getAllDocuments(indexNamedocTypeName);
+    GetDocumentsSuccess result = apiInstance.getAllDocuments(indexName, docTypeName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getAllDocuments");
@@ -472,8 +642,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
 
 ### Return type
 
@@ -481,12 +651,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getAllIndexes"></a>
 # **getAllIndexes**
@@ -499,9 +669,25 @@ Fetches &#x60;All indexes&#x60; that the user has. Not recommended to be used in
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
 try {
@@ -522,16 +708,16 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getBasicSearchResults"></a>
 # **getBasicSearchResults**
-> SearchSuccess getBasicSearchResults(indexNameq)
+> SearchSuccess getBasicSearchResults(indexName, q)
 
 
 
@@ -540,15 +726,31 @@ Basic Search which gets all documents in &#x60;index_name&#x60; for provided sea
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String q = Arrays.asList("q_example"); // String | Search Query
+String indexName = "indexName_example"; // String | Name of the index
+String q = "q_example"; // String | Search Query
 try {
-    SearchSuccess result = apiInstance.getBasicSearchResults(indexNameq);
+    SearchSuccess result = apiInstance.getBasicSearchResults(indexName, q);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getBasicSearchResults");
@@ -560,8 +762,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **q** | [**String**](.md)| Search Query |
+ **indexName** | **String**| Name of the index |
+ **q** | **String**| Search Query |
 
 ### Return type
 
@@ -569,16 +771,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getDocTypeSuggestResults"></a>
 # **getDocTypeSuggestResults**
-> SuggestSuccess getDocTypeSuggestResults(indexNamedocTypeNameq)
+> SuggestSuccess getDocTypeSuggestResults(indexName, docTypeName, q)
 
 
 
@@ -587,16 +789,32 @@ Gets Suggestions from &#x60;doc_type_name&#x60; in &#x60;index_name&#x60;. Pleas
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the Document_type
-String q = Arrays.asList("q_example"); // String | Details of the suggest query
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the Document_type
+String q = "q_example"; // String | Details of the suggest query
 try {
-    SuggestSuccess result = apiInstance.getDocTypeSuggestResults(indexNamedocTypeNameq);
+    SuggestSuccess result = apiInstance.getDocTypeSuggestResults(indexName, docTypeName, q);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getDocTypeSuggestResults");
@@ -608,9 +826,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the Document_type |
- **q** | [**String**](.md)| Details of the suggest query |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the Document_type |
+ **q** | **String**| Details of the suggest query |
 
 ### Return type
 
@@ -618,16 +836,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getDocument"></a>
 # **getDocument**
-> GetDocumentSuccess getDocument(indexNamedocTypeNamedocId)
+> GetDocumentSuccess getDocument(indexName, docTypeName, docId)
 
 
 
@@ -636,16 +854,32 @@ Fetches the document referenced by &#x60;doc_id&#x60; in &#x60;doc_type_name&#x6
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
-String docId = Arrays.asList("docId_example"); // String | Document ID
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
+String docId = "docId_example"; // String | Document ID
 try {
-    GetDocumentSuccess result = apiInstance.getDocument(indexNamedocTypeNamedocId);
+    GetDocumentSuccess result = apiInstance.getDocument(indexName, docTypeName, docId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getDocument");
@@ -657,9 +891,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
- **docId** | [**String**](.md)| Document ID |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
+ **docId** | **String**| Document ID |
 
 ### Return type
 
@@ -667,16 +901,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getDocumentType"></a>
 # **getDocumentType**
-> GetDocTypeSuccess getDocumentType(indexNamedocTypeName)
+> GetDocTypeSuccess getDocumentType(indexName, docTypeName)
 
 
 
@@ -685,15 +919,31 @@ Checks whether &#x60;document_type&#x60; in &#x60;index_name&#x60; exists
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
-String docTypeName = Arrays.asList("docTypeName_example"); // String | Name of the document_type
+String indexName = "indexName_example"; // String | Name of the index
+String docTypeName = "docTypeName_example"; // String | Name of the document_type
 try {
-    GetDocTypeSuccess result = apiInstance.getDocumentType(indexNamedocTypeName);
+    GetDocTypeSuccess result = apiInstance.getDocumentType(indexName, docTypeName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RsearchApi#getDocumentType");
@@ -705,8 +955,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
- **docTypeName** | [**String**](.md)| Name of the document_type |
+ **indexName** | **String**| Name of the index |
+ **docTypeName** | **String**| Name of the document_type |
 
 ### Return type
 
@@ -714,12 +964,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
 <a name="getIndex"></a>
 # **getIndex**
@@ -732,12 +982,28 @@ Checks whether &#x60;a particular index&#x60; {index_name} exists
 ### Example
 ```java
 // Import classes:
+//import com.parallelstack.ApiClient;
 //import com.parallelstack.ApiException;
+//import com.parallelstack.Configuration;
+//import com.parallelstack.auth.*;
 //import com.parallelstack.rsearch.RsearchApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: authToken
+ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
+authToken.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//authToken.setApiKeyPrefix("Token");
+
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
-String indexName = Arrays.asList("indexName_example"); // String | Name of the index
+String indexName = "indexName_example"; // String | Name of the index
 try {
     GetIndexSuccess result = apiInstance.getIndex(indexName);
     System.out.println(result);
@@ -751,7 +1017,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **indexName** | [**String**](.md)| Name of the index |
+ **indexName** | **String**| Name of the index |
 
 ### Return type
 
@@ -759,10 +1025,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken)[readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/jsonapplication/jsonapplication/jsonapplication/jsonapplication/json
+ - **Accept**: application/json
 
