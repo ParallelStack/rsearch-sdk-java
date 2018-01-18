@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GetDocumentsSuccessDocuments
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T13:56:00.148+05:30")
 public class GetDocumentsSuccessDocuments {
   @SerializedName("result")
   private List<Document> result = new ArrayList<Document>();

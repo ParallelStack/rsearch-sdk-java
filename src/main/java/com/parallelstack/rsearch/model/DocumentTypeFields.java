@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * DocumentTypeFields
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T13:56:00.148+05:30")
 public class DocumentTypeFields {
   @SerializedName("name")
   private String name = null;
@@ -91,53 +91,8 @@ public class DocumentTypeFields {
   @SerializedName("type")
   private TypeEnum type = null;
 
-  /**
-   * Gets or Sets suggest
-   */
-  @JsonAdapter(SuggestEnum.Adapter.class)
-  public enum SuggestEnum {
-    TRUE("true");
-
-    private String value;
-
-    SuggestEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SuggestEnum fromValue(String text) {
-      for (SuggestEnum b : SuggestEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<SuggestEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SuggestEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SuggestEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return SuggestEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
   @SerializedName("suggest")
-  private SuggestEnum suggest = null;
+  private String suggest = null;
 
   public DocumentTypeFields name(String name) {
     this.name = name;
@@ -175,7 +130,7 @@ public class DocumentTypeFields {
     this.type = type;
   }
 
-  public DocumentTypeFields suggest(SuggestEnum suggest) {
+  public DocumentTypeFields suggest(String suggest) {
     this.suggest = suggest;
     return this;
   }
@@ -185,11 +140,11 @@ public class DocumentTypeFields {
    * @return suggest
   **/
   @ApiModelProperty(value = "")
-  public SuggestEnum getSuggest() {
+  public String getSuggest() {
     return suggest;
   }
 
-  public void setSuggest(SuggestEnum suggest) {
+  public void setSuggest(String suggest) {
     this.suggest = suggest;
   }
 

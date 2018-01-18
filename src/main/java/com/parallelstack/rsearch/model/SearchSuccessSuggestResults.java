@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * SearchSuccessSuggestResults
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-09T14:15:41.783+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T13:56:00.148+05:30")
 public class SearchSuccessSuggestResults {
   @SerializedName("results")
   private List<Object> results = new ArrayList<Object>();
