@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateDocTypeFailure
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T13:56:00.148+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
 public class CreateDocTypeFailure {
   @SerializedName("document_type")
   private GetIndexesFailureIndexes documentType = null;

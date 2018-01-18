@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * SearchQuerySearchAggregations
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T13:56:00.148+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
 public class SearchQuerySearchAggregations {
   @SerializedName("field_name")
   private String fieldName = null;
