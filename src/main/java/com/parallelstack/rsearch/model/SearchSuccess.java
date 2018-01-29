@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchSuccessSuggestResults;
+import com.parallelstack.rsearch.model.SearchSuccessSearchResults;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,27 +27,27 @@ import java.io.IOException;
 /**
  * SearchSuccess
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
 public class SearchSuccess {
-  @SerializedName("suggest_results")
-  private SearchSuccessSuggestResults suggestResults = null;
+  @SerializedName("search_results")
+  private SearchSuccessSearchResults searchResults = null;
 
-  public SearchSuccess suggestResults(SearchSuccessSuggestResults suggestResults) {
-    this.suggestResults = suggestResults;
+  public SearchSuccess searchResults(SearchSuccessSearchResults searchResults) {
+    this.searchResults = searchResults;
     return this;
   }
 
    /**
-   * Get suggestResults
-   * @return suggestResults
+   * Get searchResults
+   * @return searchResults
   **/
-  @ApiModelProperty(value = "")
-  public SearchSuccessSuggestResults getSuggestResults() {
-    return suggestResults;
+  @ApiModelProperty(required = true, value = "")
+  public SearchSuccessSearchResults getSearchResults() {
+    return searchResults;
   }
 
-  public void setSuggestResults(SearchSuccessSuggestResults suggestResults) {
-    this.suggestResults = suggestResults;
+  public void setSearchResults(SearchSuccessSearchResults searchResults) {
+    this.searchResults = searchResults;
   }
 
 
@@ -60,12 +60,12 @@ public class SearchSuccess {
       return false;
     }
     SearchSuccess searchSuccess = (SearchSuccess) o;
-    return Objects.equals(this.suggestResults, searchSuccess.suggestResults);
+    return Objects.equals(this.searchResults, searchSuccess.searchResults);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(suggestResults);
+    return Objects.hash(searchResults);
   }
 
 
@@ -74,7 +74,7 @@ public class SearchSuccess {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchSuccess {\n");
     
-    sb.append("    suggestResults: ").append(toIndentedString(suggestResults)).append("\n");
+    sb.append("    searchResults: ").append(toIndentedString(searchResults)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,7 +5,7 @@
     <artifactId>rsearch</artifactId>
     <packaging>jar</packaging>
     <name>rsearch</name>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <url>https://github.com/ParallelStack/rsearch-sdk-java</url>
     <description>Java SDK for ParallelStack Search</description>
     <scm>

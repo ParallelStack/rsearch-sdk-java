@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchFailureSuggestResults;
+import com.parallelstack.rsearch.model.SearchFailureSearchResults;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,27 +27,27 @@ import java.io.IOException;
 /**
  * SearchFailure
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
 public class SearchFailure {
-  @SerializedName("suggest_results")
-  private SearchFailureSuggestResults suggestResults = null;
+  @SerializedName("search_results")
+  private SearchFailureSearchResults searchResults = null;
 
-  public SearchFailure suggestResults(SearchFailureSuggestResults suggestResults) {
-    this.suggestResults = suggestResults;
+  public SearchFailure searchResults(SearchFailureSearchResults searchResults) {
+    this.searchResults = searchResults;
     return this;
   }
 
    /**
-   * Get suggestResults
-   * @return suggestResults
+   * Get searchResults
+   * @return searchResults
   **/
-  @ApiModelProperty(value = "")
-  public SearchFailureSuggestResults getSuggestResults() {
-    return suggestResults;
+  @ApiModelProperty(required = true, value = "")
+  public SearchFailureSearchResults getSearchResults() {
+    return searchResults;
   }
 
-  public void setSuggestResults(SearchFailureSuggestResults suggestResults) {
-    this.suggestResults = suggestResults;
+  public void setSearchResults(SearchFailureSearchResults searchResults) {
+    this.searchResults = searchResults;
   }
 
 
@@ -60,12 +60,12 @@ public class SearchFailure {
       return false;
     }
     SearchFailure searchFailure = (SearchFailure) o;
-    return Objects.equals(this.suggestResults, searchFailure.suggestResults);
+    return Objects.equals(this.searchResults, searchFailure.searchResults);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(suggestResults);
+    return Objects.hash(searchResults);
   }
 
 
@@ -74,7 +74,7 @@ public class SearchFailure {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchFailure {\n");
     
-    sb.append("    suggestResults: ").append(toIndentedString(suggestResults)).append("\n");
+    sb.append("    searchResults: ").append(toIndentedString(searchResults)).append("\n");
     sb.append("}");
     return sb.toString();
   }

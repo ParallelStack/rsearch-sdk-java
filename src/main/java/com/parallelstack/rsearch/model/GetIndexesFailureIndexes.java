@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * GetIndexesFailureIndexes
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
 public class GetIndexesFailureIndexes {
   @SerializedName("error")
   private String error = null;

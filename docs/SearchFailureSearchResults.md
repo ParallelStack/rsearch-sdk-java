@@ -1,5 +1,5 @@
 
-# SearchFailureSuggestResults
+# SearchFailureSearchResults
 
 ## Properties
 Name | Type | Description | Notes

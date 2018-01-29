@@ -24,17 +24,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * SearchFailureSuggestResults
+ * SearchFailureSearchResults
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
-public class SearchFailureSuggestResults {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
+public class SearchFailureSearchResults {
   @SerializedName("error")
   private String error = null;
 
   @SerializedName("metadata")
   private Object metadata = null;
 
-  public SearchFailureSuggestResults error(String error) {
+  public SearchFailureSearchResults error(String error) {
     this.error = error;
     return this;
   }
@@ -52,7 +52,7 @@ public class SearchFailureSuggestResults {
     this.error = error;
   }
 
-  public SearchFailureSuggestResults metadata(Object metadata) {
+  public SearchFailureSearchResults metadata(Object metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -79,9 +79,9 @@ public class SearchFailureSuggestResults {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchFailureSuggestResults searchFailureSuggestResults = (SearchFailureSuggestResults) o;
-    return Objects.equals(this.error, searchFailureSuggestResults.error) &&
-        Objects.equals(this.metadata, searchFailureSuggestResults.metadata);
+    SearchFailureSearchResults searchFailureSearchResults = (SearchFailureSearchResults) o;
+    return Objects.equals(this.error, searchFailureSearchResults.error) &&
+        Objects.equals(this.metadata, searchFailureSearchResults.metadata);
   }
 
   @Override
@@ -93,7 +93,7 @@ public class SearchFailureSuggestResults {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchFailureSuggestResults {\n");
+    sb.append("class SearchFailureSearchResults {\n");
     
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");

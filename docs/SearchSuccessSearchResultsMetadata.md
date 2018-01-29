@@ -1,5 +1,5 @@
 
-# SearchSuccessSuggestResultsMetadata
+# SearchSuccessSearchResultsMetadata
 
 ## Properties
 Name | Type | Description | Notes

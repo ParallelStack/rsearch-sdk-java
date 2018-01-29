@@ -25,17 +25,17 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * SearchSuccessSuggestResultsMetadata
+ * SearchSuccessSearchResultsMetadata
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
-public class SearchSuccessSuggestResultsMetadata {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
+public class SearchSuccessSearchResultsMetadata {
   @SerializedName("number_search_results")
   private BigDecimal numberSearchResults = null;
 
   @SerializedName("query")
   private String query = null;
 
-  public SearchSuccessSuggestResultsMetadata numberSearchResults(BigDecimal numberSearchResults) {
+  public SearchSuccessSearchResultsMetadata numberSearchResults(BigDecimal numberSearchResults) {
     this.numberSearchResults = numberSearchResults;
     return this;
   }
@@ -53,7 +53,7 @@ public class SearchSuccessSuggestResultsMetadata {
     this.numberSearchResults = numberSearchResults;
   }
 
-  public SearchSuccessSuggestResultsMetadata query(String query) {
+  public SearchSuccessSearchResultsMetadata query(String query) {
     this.query = query;
     return this;
   }
@@ -80,9 +80,9 @@ public class SearchSuccessSuggestResultsMetadata {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchSuccessSuggestResultsMetadata searchSuccessSuggestResultsMetadata = (SearchSuccessSuggestResultsMetadata) o;
-    return Objects.equals(this.numberSearchResults, searchSuccessSuggestResultsMetadata.numberSearchResults) &&
-        Objects.equals(this.query, searchSuccessSuggestResultsMetadata.query);
+    SearchSuccessSearchResultsMetadata searchSuccessSearchResultsMetadata = (SearchSuccessSearchResultsMetadata) o;
+    return Objects.equals(this.numberSearchResults, searchSuccessSearchResultsMetadata.numberSearchResults) &&
+        Objects.equals(this.query, searchSuccessSearchResultsMetadata.query);
   }
 
   @Override
@@ -94,7 +94,7 @@ public class SearchSuccessSuggestResultsMetadata {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchSuccessSuggestResultsMetadata {\n");
+    sb.append("class SearchSuccessSearchResultsMetadata {\n");
     
     sb.append("    numberSearchResults: ").append(toIndentedString(numberSearchResults)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");

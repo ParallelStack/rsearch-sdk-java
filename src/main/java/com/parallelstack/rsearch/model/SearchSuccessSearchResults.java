@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchSuccessSuggestResultsMetadata;
+import com.parallelstack.rsearch.model.SearchSuccessSearchResultsMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,22 +27,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SearchSuccessSuggestResults
+ * SearchSuccessSearchResults
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
-public class SearchSuccessSuggestResults {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
+public class SearchSuccessSearchResults {
   @SerializedName("results")
   private List<Object> results = new ArrayList<Object>();
 
   @SerializedName("metadata")
-  private SearchSuccessSuggestResultsMetadata metadata = null;
+  private SearchSuccessSearchResultsMetadata metadata = null;
 
-  public SearchSuccessSuggestResults results(List<Object> results) {
+  public SearchSuccessSearchResults results(List<Object> results) {
     this.results = results;
     return this;
   }
 
-  public SearchSuccessSuggestResults addResultsItem(Object resultsItem) {
+  public SearchSuccessSearchResults addResultsItem(Object resultsItem) {
     this.results.add(resultsItem);
     return this;
   }
@@ -60,7 +60,7 @@ public class SearchSuccessSuggestResults {
     this.results = results;
   }
 
-  public SearchSuccessSuggestResults metadata(SearchSuccessSuggestResultsMetadata metadata) {
+  public SearchSuccessSearchResults metadata(SearchSuccessSearchResultsMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -70,11 +70,11 @@ public class SearchSuccessSuggestResults {
    * @return metadata
   **/
   @ApiModelProperty(required = true, value = "")
-  public SearchSuccessSuggestResultsMetadata getMetadata() {
+  public SearchSuccessSearchResultsMetadata getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(SearchSuccessSuggestResultsMetadata metadata) {
+  public void setMetadata(SearchSuccessSearchResultsMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -87,9 +87,9 @@ public class SearchSuccessSuggestResults {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchSuccessSuggestResults searchSuccessSuggestResults = (SearchSuccessSuggestResults) o;
-    return Objects.equals(this.results, searchSuccessSuggestResults.results) &&
-        Objects.equals(this.metadata, searchSuccessSuggestResults.metadata);
+    SearchSuccessSearchResults searchSuccessSearchResults = (SearchSuccessSearchResults) o;
+    return Objects.equals(this.results, searchSuccessSearchResults.results) &&
+        Objects.equals(this.metadata, searchSuccessSearchResults.metadata);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class SearchSuccessSuggestResults {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchSuccessSuggestResults {\n");
+    sb.append("class SearchSuccessSearchResults {\n");
     
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");

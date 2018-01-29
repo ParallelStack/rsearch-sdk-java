@@ -1,11 +1,11 @@
 
-# SearchSuccessSuggestResults
+# SearchSuccessSearchResults
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | **List&lt;Object&gt;** |  | 
-**metadata** | [**SearchSuccessSuggestResultsMetadata**](SearchSuccessSuggestResultsMetadata.md) |  | 
+**metadata** | [**SearchSuccessSearchResultsMetadata**](SearchSuccessSearchResultsMetadata.md) |  | 
 
 
 

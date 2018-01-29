@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchFailureSuggestResults;
+import com.parallelstack.rsearch.model.SearchFailureSearchResults;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,12 +27,12 @@ import java.io.IOException;
 /**
  * SuggestFailure
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-18T14:18:23.103+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-01-29T13:36:56.006+05:30")
 public class SuggestFailure {
   @SerializedName("suggest_results")
-  private SearchFailureSuggestResults suggestResults = null;
+  private SearchFailureSearchResults suggestResults = null;
 
-  public SuggestFailure suggestResults(SearchFailureSuggestResults suggestResults) {
+  public SuggestFailure suggestResults(SearchFailureSearchResults suggestResults) {
     this.suggestResults = suggestResults;
     return this;
   }
@@ -42,11 +42,11 @@ public class SuggestFailure {
    * @return suggestResults
   **/
   @ApiModelProperty(value = "")
-  public SearchFailureSuggestResults getSuggestResults() {
+  public SearchFailureSearchResults getSuggestResults() {
     return suggestResults;
   }
 
-  public void setSuggestResults(SearchFailureSuggestResults suggestResults) {
+  public void setSuggestResults(SearchFailureSearchResults suggestResults) {
     this.suggestResults = suggestResults;
   }
 
