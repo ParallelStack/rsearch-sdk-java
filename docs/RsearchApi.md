@@ -13,7 +13,6 @@ Method | HTTP request | Description
 [**getAdvancedIndexSuggestResults**](RsearchApi.md#getAdvancedIndexSuggestResults) | **POST** /indexes/{index_name}/suggest | 
 [**getAdvancedSearchResults**](RsearchApi.md#getAdvancedSearchResults) | **POST** /indexes/{index_name}/document_types/{doc_type_name}/search | 
 [**getAllDocumentTypes**](RsearchApi.md#getAllDocumentTypes) | **GET** /indexes/{index_name}/document_types | 
-[**getAllDocuments**](RsearchApi.md#getAllDocuments) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/documents | 
 [**getAllIndexes**](RsearchApi.md#getAllIndexes) | **GET** /indexes | 
 [**getBasicSearchResults**](RsearchApi.md#getBasicSearchResults) | **GET** /indexes/{index_name}/search | 
 [**getDocTypeSuggestResults**](RsearchApi.md#getDocTypeSuggestResults) | **GET** /indexes/{index_name}/document_types/{doc_type_name}/suggest | 
@@ -114,11 +113,11 @@ authToken.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //authToken.setApiKeyPrefix("Token");
 
-// Configure API key authorization: readAppID
-ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
-readAppID.setApiKey("YOUR API KEY");
+// Configure API key authorization: writeAppID
+ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
+writeAppID.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//readAppID.setApiKeyPrefix("Token");
+//writeAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
 String indexName = "indexName_example"; // String | Name of the index
@@ -147,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
+[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
 
 ### HTTP request headers
 
@@ -494,11 +493,11 @@ authToken.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //authToken.setApiKeyPrefix("Token");
 
-// Configure API key authorization: writeAppID
-ApiKeyAuth writeAppID = (ApiKeyAuth) defaultClient.getAuthentication("writeAppID");
-writeAppID.setApiKey("YOUR API KEY");
+// Configure API key authorization: readAppID
+ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
+readAppID.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//writeAppID.setApiKeyPrefix("Token");
+//readAppID.setApiKeyPrefix("Token");
 
 RsearchApi apiInstance = new RsearchApi();
 String indexName = "indexName_example"; // String | Name of the index
@@ -527,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authToken](../README.md#authToken), [writeAppID](../README.md#writeAppID)
+[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
 
 ### HTTP request headers
 
@@ -585,69 +584,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetDocTypesSuccess**](GetDocTypesSuccess.md)
-
-### Authorization
-
-[authToken](../README.md#authToken), [readAppID](../README.md#readAppID)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getAllDocuments"></a>
-# **getAllDocuments**
-> GetDocumentsSuccess getAllDocuments(indexName, docTypeName)
-
-
-
-Fetches all documents in &#x60;doc_type_name&#x60; for &#x60;index_name&#x60;. All the documents and hence careful with its use.
-
-### Example
-```java
-// Import classes:
-//import com.parallelstack.ApiClient;
-//import com.parallelstack.ApiException;
-//import com.parallelstack.Configuration;
-//import com.parallelstack.auth.*;
-//import com.parallelstack.rsearch.RsearchApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: authToken
-ApiKeyAuth authToken = (ApiKeyAuth) defaultClient.getAuthentication("authToken");
-authToken.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//authToken.setApiKeyPrefix("Token");
-
-// Configure API key authorization: readAppID
-ApiKeyAuth readAppID = (ApiKeyAuth) defaultClient.getAuthentication("readAppID");
-readAppID.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//readAppID.setApiKeyPrefix("Token");
-
-RsearchApi apiInstance = new RsearchApi();
-String indexName = "indexName_example"; // String | Name of the index
-String docTypeName = "docTypeName_example"; // String | Name of the document_type
-try {
-    GetDocumentsSuccess result = apiInstance.getAllDocuments(indexName, docTypeName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling RsearchApi#getAllDocuments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **indexName** | **String**| Name of the index |
- **docTypeName** | **String**| Name of the document_type |
-
-### Return type
-
-[**GetDocumentsSuccess**](GetDocumentsSuccess.md)
 
 ### Authorization
 

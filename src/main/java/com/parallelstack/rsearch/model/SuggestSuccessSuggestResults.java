@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchSuccessSearchResultsMetadata;
+import com.parallelstack.rsearch.model.SuggestSuccessSuggestResultsMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,22 +27,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SearchSuccessSearchResults
+ * SuggestSuccessSuggestResults
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-15T12:24:06.006+05:30")
-public class SearchSuccessSearchResults {
+public class SuggestSuccessSuggestResults {
   @SerializedName("results")
   private List<Object> results = new ArrayList<Object>();
 
   @SerializedName("metadata")
-  private SearchSuccessSearchResultsMetadata metadata = null;
+  private SuggestSuccessSuggestResultsMetadata metadata = null;
 
-  public SearchSuccessSearchResults results(List<Object> results) {
+  public SuggestSuccessSuggestResults results(List<Object> results) {
     this.results = results;
     return this;
   }
 
-  public SearchSuccessSearchResults addResultsItem(Object resultsItem) {
+  public SuggestSuccessSuggestResults addResultsItem(Object resultsItem) {
     this.results.add(resultsItem);
     return this;
   }
@@ -60,7 +60,7 @@ public class SearchSuccessSearchResults {
     this.results = results;
   }
 
-  public SearchSuccessSearchResults metadata(SearchSuccessSearchResultsMetadata metadata) {
+  public SuggestSuccessSuggestResults metadata(SuggestSuccessSuggestResultsMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -70,11 +70,11 @@ public class SearchSuccessSearchResults {
    * @return metadata
   **/
   @ApiModelProperty(required = true, value = "")
-  public SearchSuccessSearchResultsMetadata getMetadata() {
+  public SuggestSuccessSuggestResultsMetadata getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(SearchSuccessSearchResultsMetadata metadata) {
+  public void setMetadata(SuggestSuccessSuggestResultsMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -87,9 +87,9 @@ public class SearchSuccessSearchResults {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchSuccessSearchResults searchSuccessSearchResults = (SearchSuccessSearchResults) o;
-    return Objects.equals(this.results, searchSuccessSearchResults.results) &&
-        Objects.equals(this.metadata, searchSuccessSearchResults.metadata);
+    SuggestSuccessSuggestResults suggestSuccessSuggestResults = (SuggestSuccessSuggestResults) o;
+    return Objects.equals(this.results, suggestSuccessSuggestResults.results) &&
+        Objects.equals(this.metadata, suggestSuccessSuggestResults.metadata);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class SearchSuccessSearchResults {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchSuccessSearchResults {\n");
+    sb.append("class SuggestSuccessSuggestResults {\n");
     
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");

@@ -19,63 +19,56 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.parallelstack.rsearch.model.SearchSuccessSearchResultsMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 /**
- * SearchSuccessSearchResults
+ * SuggestSuccessSuggestResultsMetadata
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-15T12:24:06.006+05:30")
-public class SearchSuccessSearchResults {
-  @SerializedName("results")
-  private List<Object> results = new ArrayList<Object>();
+public class SuggestSuccessSuggestResultsMetadata {
+  @SerializedName("number_search_results")
+  private BigDecimal numberSearchResults = null;
 
-  @SerializedName("metadata")
-  private SearchSuccessSearchResultsMetadata metadata = null;
+  @SerializedName("query")
+  private String query = null;
 
-  public SearchSuccessSearchResults results(List<Object> results) {
-    this.results = results;
-    return this;
-  }
-
-  public SearchSuccessSearchResults addResultsItem(Object resultsItem) {
-    this.results.add(resultsItem);
+  public SuggestSuccessSuggestResultsMetadata numberSearchResults(BigDecimal numberSearchResults) {
+    this.numberSearchResults = numberSearchResults;
     return this;
   }
 
    /**
-   * Get results
-   * @return results
+   * Get numberSearchResults
+   * @return numberSearchResults
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<Object> getResults() {
-    return results;
+  public BigDecimal getNumberSearchResults() {
+    return numberSearchResults;
   }
 
-  public void setResults(List<Object> results) {
-    this.results = results;
+  public void setNumberSearchResults(BigDecimal numberSearchResults) {
+    this.numberSearchResults = numberSearchResults;
   }
 
-  public SearchSuccessSearchResults metadata(SearchSuccessSearchResultsMetadata metadata) {
-    this.metadata = metadata;
+  public SuggestSuccessSuggestResultsMetadata query(String query) {
+    this.query = query;
     return this;
   }
 
    /**
-   * Get metadata
-   * @return metadata
+   * Get query
+   * @return query
   **/
   @ApiModelProperty(required = true, value = "")
-  public SearchSuccessSearchResultsMetadata getMetadata() {
-    return metadata;
+  public String getQuery() {
+    return query;
   }
 
-  public void setMetadata(SearchSuccessSearchResultsMetadata metadata) {
-    this.metadata = metadata;
+  public void setQuery(String query) {
+    this.query = query;
   }
 
 
@@ -87,24 +80,24 @@ public class SearchSuccessSearchResults {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchSuccessSearchResults searchSuccessSearchResults = (SearchSuccessSearchResults) o;
-    return Objects.equals(this.results, searchSuccessSearchResults.results) &&
-        Objects.equals(this.metadata, searchSuccessSearchResults.metadata);
+    SuggestSuccessSuggestResultsMetadata suggestSuccessSuggestResultsMetadata = (SuggestSuccessSuggestResultsMetadata) o;
+    return Objects.equals(this.numberSearchResults, suggestSuccessSuggestResultsMetadata.numberSearchResults) &&
+        Objects.equals(this.query, suggestSuccessSuggestResultsMetadata.query);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(results, metadata);
+    return Objects.hash(numberSearchResults, query);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchSuccessSearchResults {\n");
+    sb.append("class SuggestSuccessSuggestResultsMetadata {\n");
     
-    sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    numberSearchResults: ").append(toIndentedString(numberSearchResults)).append("\n");
+    sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("}");
     return sb.toString();
   }
