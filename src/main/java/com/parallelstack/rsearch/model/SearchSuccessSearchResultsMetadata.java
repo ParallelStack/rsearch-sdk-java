@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 /**
  * SearchSuccessSearchResultsMetadata
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-15T12:24:06.006+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-02-15T12:33:34.869+05:30")
 public class SearchSuccessSearchResultsMetadata {
   @SerializedName("number_search_results")
   private BigDecimal numberSearchResults = null;
@@ -35,8 +35,8 @@ public class SearchSuccessSearchResultsMetadata {
   @SerializedName("query")
   private String query = null;
 
-  @SerializedName("aggregations")
-  private Object aggregations = null;
+  @SerializedName("aggregated")
+  private Object aggregated = null;
 
   public SearchSuccessSearchResultsMetadata numberSearchResults(BigDecimal numberSearchResults) {
     this.numberSearchResults = numberSearchResults;
@@ -74,22 +74,22 @@ public class SearchSuccessSearchResultsMetadata {
     this.query = query;
   }
 
-  public SearchSuccessSearchResultsMetadata aggregations(Object aggregations) {
-    this.aggregations = aggregations;
+  public SearchSuccessSearchResultsMetadata aggregated(Object aggregated) {
+    this.aggregated = aggregated;
     return this;
   }
 
    /**
-   * Get aggregations
-   * @return aggregations
+   * Get aggregated
+   * @return aggregated
   **/
   @ApiModelProperty(value = "")
-  public Object getAggregations() {
-    return aggregations;
+  public Object getAggregated() {
+    return aggregated;
   }
 
-  public void setAggregations(Object aggregations) {
-    this.aggregations = aggregations;
+  public void setAggregated(Object aggregated) {
+    this.aggregated = aggregated;
   }
 
 
@@ -104,12 +104,12 @@ public class SearchSuccessSearchResultsMetadata {
     SearchSuccessSearchResultsMetadata searchSuccessSearchResultsMetadata = (SearchSuccessSearchResultsMetadata) o;
     return Objects.equals(this.numberSearchResults, searchSuccessSearchResultsMetadata.numberSearchResults) &&
         Objects.equals(this.query, searchSuccessSearchResultsMetadata.query) &&
-        Objects.equals(this.aggregations, searchSuccessSearchResultsMetadata.aggregations);
+        Objects.equals(this.aggregated, searchSuccessSearchResultsMetadata.aggregated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numberSearchResults, query, aggregations);
+    return Objects.hash(numberSearchResults, query, aggregated);
   }
 
 
@@ -120,7 +120,7 @@ public class SearchSuccessSearchResultsMetadata {
     
     sb.append("    numberSearchResults: ").append(toIndentedString(numberSearchResults)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
-    sb.append("    aggregations: ").append(toIndentedString(aggregations)).append("\n");
+    sb.append("    aggregated: ").append(toIndentedString(aggregated)).append("\n");
     sb.append("}");
     return sb.toString();
   }
